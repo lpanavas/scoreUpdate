@@ -1,0 +1,52 @@
+{
+  "technologies": [
+    {
+      "title": "Unlock your smartphone",
+      "description": "Facial recognition can be used to unlock smartphones, providing a secure and personalized access method."
+    },
+    {
+      "title": "Analyze your physical health",
+      "description": "The technology can analyze facial features to indicate signs of certain health conditions."
+    },
+    {
+      "title": "Pay with your face",
+      "description": "Facial recognition can be used for payment verification, replacing the need for cash or cards."
+    },
+    {
+      "title": "Enter a building",
+      "description": "Buildings can use facial recognition for access control, improving security and convenience."
+    },
+    {
+      "title": "Access government services",
+      "description": "Government services can use facial recognition to verify identities, simplifying the process for accessing services."
+    },
+    {
+      "title": "Apply for a passport online",
+      "description": "Facial recognition can streamline the online passport application process by confirming the applicant's identity."
+    },
+    {
+      "title": "Tagged in social media",
+      "description": "Social media platforms can use facial recognition to identify and tag individuals in photos."
+    },
+    {
+      "title": "Identify a person in a crowd",
+      "description": "Facial recognition can identify individuals in large crowds, useful for security and surveillance purposes."
+    },
+    {
+      "title": "Classify faces by ethnicity",
+      "description": "The technology can categorize faces based on their ethnic features, though this application has raised ethical concerns."
+    },
+    {
+      "title": "Monitor workers",
+      "description": "Facial recognition can monitor employees' attendance and work hours, helping businesses manage their workforce."
+    },
+    {
+      "title": "Tool for foreign policy",
+      "description": "Governments can use facial recognition as a tool for foreign policy, particularly in security and surveillance operations."
+    },
+    {
+      "title": "Tool to wage war",
+      "description": "Facial recognition can play a crucial role in modern warfare, including drone targeting and identifying enemy combatants."
+    }
+  ]
+}

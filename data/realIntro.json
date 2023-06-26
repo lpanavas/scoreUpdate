@@ -1,0 +1,49 @@
+{
+  "start": "guide_greeting",
+  "scenes": {
+    "guide_greeting": {
+      "role": "guide",
+      "scene": "Welcome to our AI ethics game! Get ready to explore the moral implications of AI technology and make conscious choices for yourself and your loved ones.",
+      "choices": [
+        {
+          "option": "Continue",
+          "public": 40
+        }
+      ],
+      "next": "guide_explanation"
+    },
+    "guide_explanation": {
+      "role": "guide",
+      "scene": "Help us evaluate AI technologies for ethicality. Your input matters as we discern which AI technology is acceptable. Compare two cards and provide your verdict.",
+      "choices": [
+        {
+          "option": "Sweet! Glad I can help.",
+          "public": 20
+        }
+      ],
+      "next": "start_scene"
+    },
+    "start_scene": {
+      "role": "guide",
+      "scene": "At the end of the game, you will be able to see how your choices compare to others.",
+      "choices": [
+        {
+          "option": "Let's go!",
+          "public": 1
+        }
+      ],
+      "next": "end_game"
+    },
+    "end_game": {
+      "role": "guide",
+      "scene": "Let's get started!",
+      "choices": [
+        {
+          "option": "Begin Game",
+          "public": 100
+        }
+      ],
+      "next": { "type": "game", "key": "pairwise_comparison" }
+    }
+  }
+}
