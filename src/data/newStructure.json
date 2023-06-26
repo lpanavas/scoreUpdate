@@ -1,0 +1,320 @@
+{
+  "order": [
+    "intro",
+    "pairwise_comparison",
+    "nextStory",
+    "pairwise_comparison2"
+  ],
+  "stories": {
+    "intro": {
+      "start": "guide_greeting",
+      "scenes": {
+        "guide_greeting": {
+          "role": "guide",
+          "scene": "Welcome to our AI ethics game! Get ready to explore the moral implications of AI technology and make conscious choices for yourself and your loved ones.",
+          "choices": [
+            {
+              "option": "Continue",
+              "public": 40
+            }
+          ],
+          "next": "guide_explanation"
+        },
+        "guide_explanation": {
+          "role": "guide",
+          "scene": "Help us evaluate AI technologies for ethicality. Choose which card you think the most people agree with.",
+          "choices": [
+            {
+              "option": "Sweet! Glad I can help.",
+              "public": 20
+            }
+          ],
+          "next": "start_scene"
+        },
+        "start_scene": {
+          "role": "guide",
+          "scene": "If you agree with the majority you recieve points. If you disagree, you recieve 0. The closer the public split, the more points you will recieve!",
+          "choices": [
+            {
+              "option": "Let's go!",
+              "public": 1
+            }
+          ],
+          "next": { "type": "game", "key": "pairwise_comparison" }
+        }
+      }
+    },
+    "nextStory": {
+      "start": "demographic_questionnaire",
+      "scenes": {
+        "demographic_questionnaire": {
+          "role": "guide",
+          "scene": "Before we begin the AI ethics game, we would appreciate it if you could provide us with some demographic information. ",
+          "choices": [
+            {
+              "option": "Continue",
+              "public": 40
+            }
+          ],
+          "next": "age_question"
+        },
+        "age_question": {
+          "role": "guide",
+          "scene": "What is your age?",
+          "choices": [
+            {
+              "option": "18-24",
+              "public": 40
+            },
+            {
+              "option": "25-34",
+              "public": 40
+            },
+            {
+              "option": "35-44",
+              "public": 40
+            },
+            {
+              "option": "45-54",
+              "public": 40
+            },
+            {
+              "option": "55-64",
+              "public": 40
+            },
+            {
+              "option": "65+",
+              "public": 40
+            },
+            {
+              "option": "Prefer not to say",
+              "public": 40
+            }
+          ],
+          "next": "gender_question"
+        },
+        "gender_question": {
+          "role": "guide",
+          "scene": "What is your gender?",
+          "choices": [
+            {
+              "option": "Male",
+              "public": 40
+            },
+            {
+              "option": "Female",
+              "public": 40
+            },
+            {
+              "option": "Non-binary",
+              "public": 40
+            },
+            {
+              "option": "Prefer not to say",
+              "public": 40
+            }
+          ],
+          "next": "education_question"
+        },
+        "education_question": {
+          "role": "guide",
+          "scene": "What is the highest level of education you have completed?",
+          "choices": [
+            {
+              "option": "Less than high school",
+              "public": 10
+            },
+            {
+              "option": "High school diploma or equivalent",
+              "public": 20
+            },
+            {
+              "option": "Some college or associate degree",
+              "public": 30
+            },
+            {
+              "option": "Bachelor's degree",
+              "public": 40
+            },
+            {
+              "option": "Master's degree",
+              "public": 50
+            },
+            {
+              "option": "Doctoral degree",
+              "public": 60
+            },
+            {
+              "option": "Prefer not to say",
+              "public": 10
+            }
+          ],
+          "next": "employment_question"
+        },
+        "employment_question": {
+          "role": "user",
+          "scene": "What is your current employment status?",
+          "choices": [
+            {
+              "option": "Employed full-time",
+              "public": 30
+            },
+            {
+              "option": "Employed part-time",
+              "public": 20
+            },
+            {
+              "option": "Unemployed",
+              "public": 10
+            },
+            {
+              "option": "Student",
+              "public": 10
+            },
+            {
+              "option": "Retired",
+              "public": 10
+            },
+            {
+              "option": "Self-employed",
+              "public": 20
+            },
+            {
+              "option": "Prefer not to say",
+              "public": 10
+            }
+          ],
+          "next": "end_questionnaire"
+        },
+        "end_questionnaire": {
+          "role": "guide",
+          "scene": "Thank you for providing your demographic information. We appreciate your participation. Moving on to the AI ethics game...",
+          "choices": [
+            {
+              "option": "Continue",
+              "public": 100
+            }
+          ],
+          "next": "end_game"
+        },
+        "end_game": {
+          "role": "guide",
+          "scene": "Moving to the next stage...",
+          "choices": [
+            {
+              "option": "Step into the next stage",
+              "public": 100
+            }
+          ],
+          "next": { "type": "game", "key": "pairwise_comparison2" }
+        }
+      }
+    }
+  },
+  "games": {
+    "pairwise_comparison": {
+      "technologies": [
+        {
+          "title": "Unlock your smartphone",
+          "description": "Facial recognition can be used to unlock smartphones, providing a secure and personalized access method."
+        },
+        {
+          "title": "Analyze your physical health",
+          "description": "The technology can analyze facial features to indicate signs of certain health conditions."
+        },
+        {
+          "title": "Pay with your face",
+          "description": "Facial recognition can be used for payment verification, replacing the need for cash or cards."
+        },
+        {
+          "title": "Enter a building",
+          "description": "Buildings can use facial recognition for access control, improving security and convenience."
+        },
+        {
+          "title": "Access government services",
+          "description": "Government services can use facial recognition to verify identities, simplifying the process for accessing services."
+        },
+        {
+          "title": "Apply for a passport online",
+          "description": "Facial recognition can streamline the online passport application process by confirming the applicant's identity."
+        },
+        {
+          "title": "Tagged in social media",
+          "description": "Social media platforms can use facial recognition to identify and tag individuals in photos."
+        },
+        {
+          "title": "Identify a person in a crowd",
+          "description": "Facial recognition can identify individuals in large crowds, useful for security and surveillance purposes."
+        },
+        {
+          "title": "Classify faces by ethnicity",
+          "description": "The technology can categorize faces based on their ethnic features, though this application has raised ethical concerns."
+        },
+        {
+          "title": "Monitor workers",
+          "description": "Facial recognition can monitor employees' attendance and work hours, helping businesses manage their workforce."
+        },
+        {
+          "title": "Tool for foreign policy",
+          "description": "Governments can use facial recognition as a tool for foreign policy, particularly in security and surveillance operations."
+        },
+        {
+          "title": "Tool to wage war",
+          "description": "Facial recognition can play a crucial role in modern warfare, including drone targeting and identifying enemy combatants."
+        }
+      ]
+    },
+    "pairwise_comparison2": {
+      "technologies": [
+        {
+          "title": "Aerial photography and videography",
+          "description": "Drones can capture stunning aerial photographs and videos for various purposes like filmmaking, real estate, and landscape analysis."
+        },
+        {
+          "title": "Search and rescue operations",
+          "description": "Drones equipped with thermal cameras and GPS capabilities can assist in locating missing persons or survivors in search and rescue missions."
+        },
+        {
+          "title": "Delivery services",
+          "description": "Drone delivery systems enable efficient and fast delivery of packages and goods, especially in remote or hard-to-reach areas."
+        },
+        {
+          "title": "Infrastructure inspection",
+          "description": "Drones equipped with high-resolution cameras and sensors can inspect infrastructure such as bridges, power lines, and pipelines, providing cost-effective and safer alternatives to traditional inspection methods."
+        },
+        {
+          "title": "Agricultural monitoring",
+          "description": "Drones equipped with multispectral or hyperspectral cameras can monitor crops, assess plant health, and help optimize farming practices."
+        },
+        {
+          "title": "Wildlife conservation",
+          "description": "Drones can aid in wildlife conservation efforts by monitoring endangered species, tracking animal populations, and detecting illegal poaching activities."
+        },
+        {
+          "title": "Disaster assessment and management",
+          "description": "Drones can provide real-time aerial views of disaster-affected areas, assisting in damage assessment, resource allocation, and emergency response coordination."
+        },
+        {
+          "title": "Surveillance and security",
+          "description": "Drones equipped with cameras and sensors can enhance surveillance and security measures, monitoring public spaces, critical infrastructure, and borders."
+        },
+        {
+          "title": "Environmental monitoring",
+          "description": "Drones can collect data on air quality, water pollution, and ecosystem changes, aiding environmental research and monitoring efforts."
+        },
+        {
+          "title": "Scientific research and exploration",
+          "description": "Drones can assist scientists in conducting research in remote or inaccessible areas, such as studying volcanoes, mapping glaciers, or monitoring marine life."
+        },
+        {
+          "title": "Drone racing and entertainment",
+          "description": "Drone racing has gained popularity as a competitive sport, and drones equipped with cameras can provide exhilarating first-person view experiences for entertainment purposes."
+        },
+        {
+          "title": "Military and defense applications",
+          "description": "Drones play a crucial role in military and defense operations, including reconnaissance, surveillance, target acquisition, and combat missions."
+        }
+      ]
+    }
+  }
+}

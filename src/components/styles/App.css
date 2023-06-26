@@ -1,0 +1,113 @@
+/* App.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  color: #000;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f3f7; /* same as .app background-color */
+
+  height: 100vh;
+  width: 100vw;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Mono', monospace;
+  color: #000;
+}
+
+.app {
+  width: 80%;
+  background-color: #f3f3f7;
+  max-width: 50rem;
+
+  min-width: 20rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.story-page,
+.pairwise-game,
+.landing-page {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  position: relative;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2em 1.5em;
+  border: none;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  margin: 0.2em;
+}
+
+h4 {
+  font-size: .9rem;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  margin: 0.2em;
+}
+
+a {
+  color: #9cd8ec;
+}
+
+/* Media Queries */
+
+/* For devices smaller than 600px */
+@media only screen and (max-width: 37.5rem) {
+  .app {
+    padding: 1em;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .story-page,
+  .pairwise-game,
+  .landing-page {
+    padding: 0.5em;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+}
+
+/* For devices larger than 900px */
+@media only screen and (min-width: 56.25rem) {
+  .app {
+    width: 100vw;
+    padding: 2em;
+  }
+
+  .story-page,
+  .pairwise-game,
+  .landing-page {
+    padding: 2em 1.5em;
+  }
+}

@@ -1,0 +1,39 @@
+
+
+.landing-page {
+    text-align: center;
+  }
+  
+  .landing-page h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+  }
+  
+  .landing-page p {
+    font-size: 2rem;
+    letter-spacing: 0.01em;
+  }
+  .logo-image {
+    width: 20em; /* Adjust the width to your desired size */
+    height: auto; /* Automatically adjust the height while maintaining the aspect ratio */
+  }
+
+  .landing-page-button {
+    font-family: 'Roboto Mono', monospace;
+
+    font-size: x-large; /* Increase the font size to make the text larger */
+    margin: 1em;
+    padding: .7em; /* Increase the padding to make the button bigger */
+    background-color: #6CB574;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(108, 181, 116, 0.4);
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .landing-page-button:hover {
+    background-color: #54935C;
+  }

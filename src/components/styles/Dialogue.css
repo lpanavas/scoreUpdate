@@ -1,0 +1,47 @@
+/* dialogue.css */
+.dialogue {
+    border-radius: 1.2em;
+    padding: .7em;
+    margin: .8em;
+    max-width: 100%;
+    font-size: 1.3em;
+    padding:1.2em;
+  }
+  
+  .dialogue.guide {
+    align-self: flex-start;
+    background-color: #f1f1f1;
+    color: #000; /* Set consistent text color */
+    max-width: 70%;
+    font-size: 1.3em;
+
+  }
+  
+  .dialogue.choice {
+    align-self: flex-end;
+    background-color: #6C88B5; /* Updated color choice */
+    color: white;
+    text-align: right;
+    max-width: 40%;
+    font-size: 1.3em;
+  }
+  .pre-dialogue{
+    border-radius: 1.2em;
+    padding: .7em;
+    margin: .8em;
+    max-width: 100%;
+    font-size: 1.3em;
+    align-self: flex-start;
+    background-color: #f1f1f1;
+    color: #000; /* Set consistent text color */
+    max-width: 70%;
+  
+  
+  }
+  
+  @media screen and (min-width: 768px) {
+    .dialogue {
+      max-width: 80%;
+    }
+  }
+  

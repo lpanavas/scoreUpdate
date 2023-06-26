@@ -1,0 +1,400 @@
+{
+  "comparisons": [
+    {
+      "title1": "Unlock your smartphone",
+      "title2": "Analyze your physical health",
+      "percent1": 52,
+      "percent2": 48
+    },
+    {
+      "title1": "Unlock your smartphone",
+      "title2": "Pay with your face",
+      "percent1": 61,
+      "percent2": 39
+    },
+    {
+      "title1": "Unlock your smartphone",
+      "title2": "Enter a building",
+      "percent1": 75,
+      "percent2": 25
+    },
+    {
+      "title1": "Unlock your smartphone",
+      "title2": "Access government services",
+      "percent1": 83,
+      "percent2": 17
+    },
+    {
+      "title1": "Unlock your smartphone",
+      "title2": "Apply for a passport online",
+      "percent1": 84,
+      "percent2": 16
+    },
+    {
+      "title1": "Unlock your smartphone",
+      "title2": "Tagged in social media",
+      "percent1": 89,
+      "percent2": 11
+    },
+    {
+      "title1": "Unlock your smartphone",
+      "title2": "Identify a person in a crowd",
+      "percent1": 91,
+      "percent2": 9
+    },
+    {
+      "title1": "Unlock your smartphone",
+      "title2": "Classify faces by ethnicity",
+      "percent1": 92,
+      "percent2": 8
+    },
+    {
+      "title1": "Unlock your smartphone",
+      "title2": "Monitor workers",
+      "percent1": 100,
+      "percent2": 0
+    },
+    {
+      "title1": "Unlock your smartphone",
+      "title2": "Tool for foreign policy",
+      "percent1": 100,
+      "percent2": 0
+    },
+    {
+      "title1": "Unlock your smartphone",
+      "title2": "Tool to wage war",
+      "percent1": 100,
+      "percent2": 0
+    },
+    {
+      "title1": "Analyze your physical health",
+      "title2": "Pay with your face",
+      "percent1": 52,
+      "percent2": 48
+    },
+    {
+      "title1": "Analyze your physical health",
+      "title2": "Enter a building",
+      "percent1": 64,
+      "percent2": 36
+    },
+    {
+      "title1": "Analyze your physical health",
+      "title2": "Access government services",
+      "percent1": 72,
+      "percent2": 28
+    },
+    {
+      "title1": "Analyze your physical health",
+      "title2": "Apply for a passport online",
+      "percent1": 80,
+      "percent2": 20
+    },
+    {
+      "title1": "Analyze your physical health",
+      "title2": "Tagged in social media",
+      "percent1": 80,
+      "percent2": 20
+    },
+    {
+      "title1": "Analyze your physical health",
+      "title2": "Identify a person in a crowd",
+      "percent1": 89,
+      "percent2": 11
+    },
+    {
+      "title1": "Analyze your physical health",
+      "title2": "Classify faces by ethnicity",
+      "percent1": 95,
+      "percent2": 5
+    },
+    {
+      "title1": "Analyze your physical health",
+      "title2": "Monitor workers",
+      "percent1": 92,
+      "percent2": 8
+    },
+    {
+      "title1": "Analyze your physical health",
+      "title2": "Tool for foreign policy",
+      "percent1": 100,
+      "percent2": 0
+    },
+    {
+      "title1": "Analyze your physical health",
+      "title2": "Tool to wage war",
+      "percent1": 93,
+      "percent2": 7
+    },
+    {
+      "title1": "Pay with your face",
+      "title2": "Enter a building",
+      "percent1": 52,
+      "percent2": 48
+    },
+    {
+      "title1": "Pay with your face",
+      "title2": "Access government services",
+      "percent1": 70,
+      "percent2": 30
+    },
+    {
+      "title1": "Pay with your face",
+      "title2": "Apply for a passport online",
+      "percent1": 76,
+      "percent2": 24
+    },
+    {
+      "title1": "Pay with your face",
+      "title2": "Tagged in social media",
+      "percent1": 77,
+      "percent2": 23
+    },
+    {
+      "title1": "Pay with your face",
+      "title2": "Identify a person in a crowd",
+      "percent1": 79,
+      "percent2": 21
+    },
+    {
+      "title1": "Pay with your face",
+      "title2": "Classify faces by ethnicity",
+      "percent1": 89,
+      "percent2": 11
+    },
+    {
+      "title1": "Pay with your face",
+      "title2": "Monitor workers",
+      "percent1": 87,
+      "percent2": 13
+    },
+    {
+      "title1": "Pay with your face",
+      "title2": "Tool for foreign policy",
+      "percent1": 89,
+      "percent2": 11
+    },
+    {
+      "title1": "Pay with your face",
+      "title2": "Tool to wage war",
+      "percent1": 92,
+      "percent2": 8
+    },
+    {
+      "title1": "Enter a building",
+      "title2": "Access government services",
+      "percent1": 52,
+      "percent2": 48
+    },
+    {
+      "title1": "Enter a building",
+      "title2": "Apply for a passport online",
+      "percent1": 61,
+      "percent2": 39
+    },
+    {
+      "title1": "Enter a building",
+      "title2": "Tagged in social media",
+      "percent1": 73,
+      "percent2": 27
+    },
+    {
+      "title1": "Enter a building",
+      "title2": "Identify a person in a crowd",
+      "percent1": 76,
+      "percent2": 24
+    },
+    {
+      "title1": "Enter a building",
+      "title2": "Classify faces by ethnicity",
+      "percent1": 79,
+      "percent2": 21
+    },
+    {
+      "title1": "Enter a building",
+      "title2": "Monitor workers",
+      "percent1": 86,
+      "percent2": 14
+    },
+    {
+      "title1": "Enter a building",
+      "title2": "Tool for foreign policy",
+      "percent1": 89,
+      "percent2": 11
+    },
+    {
+      "title1": "Enter a building",
+      "title2": "Tool to wage war",
+      "percent1": 89,
+      "percent2": 11
+    },
+    {
+      "title1": "Access government services",
+      "title2": "Apply for a passport online",
+      "percent1": 52,
+      "percent2": 48
+    },
+    {
+      "title1": "Access government services",
+      "title2": "Tagged in social media",
+      "percent1": 60,
+      "percent2": 40
+    },
+    {
+      "title1": "Access government services",
+      "title2": "Identify a person in a crowd",
+      "percent1": 73,
+      "percent2": 27
+    },
+    {
+      "title1": "Access government services",
+      "title2": "Classify faces by ethnicity",
+      "percent1": 83,
+      "percent2": 17
+    },
+    {
+      "title1": "Access government services",
+      "title2": "Monitor workers",
+      "percent1": 88,
+      "percent2": 12
+    },
+    {
+      "title1": "Access government services",
+      "title2": "Tool for foreign policy",
+      "percent1": 83,
+      "percent2": 17
+    },
+    {
+      "title1": "Access government services",
+      "title2": "Tool to wage war",
+      "percent1": 92,
+      "percent2": 8
+    },
+    {
+      "title1": "Apply for a passport online",
+      "title2": "Tagged in social media",
+      "percent1": 52,
+      "percent2": 48
+    },
+    {
+      "title1": "Apply for a passport online",
+      "title2": "Identify a person in a crowd",
+      "percent1": 66,
+      "percent2": 34
+    },
+    {
+      "title1": "Apply for a passport online",
+      "title2": "Classify faces by ethnicity",
+      "percent1": 78,
+      "percent2": 22
+    },
+    {
+      "title1": "Apply for a passport online",
+      "title2": "Monitor workers",
+      "percent1": 82,
+      "percent2": 18
+    },
+    {
+      "title1": "Apply for a passport online",
+      "title2": "Tool for foreign policy",
+      "percent1": 83,
+      "percent2": 17
+    },
+    {
+      "title1": "Apply for a passport online",
+      "title2": "Tool to wage war",
+      "percent1": 92,
+      "percent2": 8
+    },
+    {
+      "title1": "Tagged in social media",
+      "title2": "Identify a person in a crowd",
+      "percent1": 52,
+      "percent2": 48
+    },
+    {
+      "title1": "Tagged in social media",
+      "title2": "Classify faces by ethnicity",
+      "percent1": 62,
+      "percent2": 38
+    },
+    {
+      "title1": "Tagged in social media",
+      "title2": "Monitor workers",
+      "percent1": 68,
+      "percent2": 32
+    },
+    {
+      "title1": "Tagged in social media",
+      "title2": "Tool for foreign policy",
+      "percent1": 78,
+      "percent2": 22
+    },
+    {
+      "title1": "Tagged in social media",
+      "title2": "Tool to wage war",
+      "percent1": 82,
+      "percent2": 18
+    },
+    {
+      "title1": "Identify a person in a crowd",
+      "title2": "Classify faces by ethnicity",
+      "percent1": 52,
+      "percent2": 48
+    },
+    {
+      "title1": "Identify a person in a crowd",
+      "title2": "Monitor workers",
+      "percent1": 65,
+      "percent2": 35
+    },
+    {
+      "title1": "Identify a person in a crowd",
+      "title2": "Tool for foreign policy",
+      "percent1": 76,
+      "percent2": 24
+    },
+    {
+      "title1": "Identify a person in a crowd",
+      "title2": "Tool to wage war",
+      "percent1": 83,
+      "percent2": 17
+    },
+    {
+      "title1": "Classify faces by ethnicity",
+      "title2": "Monitor workers",
+      "percent1": 52,
+      "percent2": 48
+    },
+    {
+      "title1": "Classify faces by ethnicity",
+      "title2": "Tool for foreign policy",
+      "percent1": 69,
+      "percent2": 31
+    },
+    {
+      "title1": "Classify faces by ethnicity",
+      "title2": "Tool to wage war",
+      "percent1": 76,
+      "percent2": 24
+    },
+    {
+      "title1": "Monitor workers",
+      "title2": "Tool for foreign policy",
+      "percent1": 52,
+      "percent2": 48
+    },
+    {
+      "title1": "Monitor workers",
+      "title2": "Tool to wage war",
+      "percent1": 62,
+      "percent2": 38
+    },
+    {
+      "title1": "Tool for foreign policy",
+      "title2": "Tool to wage war",
+      "percent1": 52,
+      "percent2": 48
+    }
+  ]
+}

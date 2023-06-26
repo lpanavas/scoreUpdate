@@ -1,0 +1,13 @@
+.score-bar {
+    position: absolute;
+    width: 100%;
+    bottom: 3em;
+    /* left: 0; */
+    margin-top: 2em;
+    background-color: #7595db;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  

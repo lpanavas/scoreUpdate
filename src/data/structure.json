@@ -1,0 +1,32 @@
+{
+  "order": [
+    "intro",
+    "pairwise_comparison",
+    "nextStory",
+    "pairwise_comparison2"
+  ],
+  "stories": {
+    "intro": {
+      "path": "../data/realIntro.json",
+      "publicOpinion": false
+    },
+    "nextStory": {
+      "path": "../data/demographic.json",
+      "publicOpinion": true
+    }
+  },
+  "games": {
+    "pairwise_comparison": {
+      "path": "../data/facialRecognition.json",
+      "prompt": "which of these two technologies is less acceptable",
+      "publicOpinion": true,
+      "endResultPublicOpinion": true
+    },
+    "pairwise_comparison2": {
+      "path": "../data/droneData.json",
+      "prompt": "which of these two technologies is less acceptable",
+      "publicOpinion": true,
+      "endResultPublicOpinion": true
+    }
+  }
+}

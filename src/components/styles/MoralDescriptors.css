@@ -1,0 +1,47 @@
+.moral-descriptors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .image-wrapper img {
+    width: 300px; /* This will ensure the images always have the same width */
+    height: auto;
+    max-height: 12em;
+    object-fit: contain;
+  }
+  
+  .image-wrapper button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: lightgray;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .image-wrapper button:hover {
+    background-color: #ddd; /* This will lighten the button when hovered over */
+  }
+  
+  .unsure-button {
+    margin-top: 20px; /* This creates space above the Unsure button */
+  }
+  

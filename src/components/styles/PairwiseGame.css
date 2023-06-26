@@ -1,0 +1,149 @@
+/* pairwiseGame.css */
+
+.pairwise-game {
+    max-width: 100%;
+    width: 100%;
+    height: 80vh;
+    background: #fff;
+    position: relative;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding:1.5em;
+    margin: 0 auto;
+    border: none; /* Remove the border property */
+  }
+
+  .scoreLines{
+    width: 100%;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .progress-bar-inner {
+    height: 100%;
+    background-color: #6CB574;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+  }
+  
+  .technology-pair {
+    display: grid; /* Grid-based layout */
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 1em;
+    margin-top: 1em;
+    position: relative;
+    width: 90%;
+  }
+  
+  
+  .technology-card:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .descriptors {
+    position: absolute;
+    top: calc(100% + 10px); /* Add spacing between descriptors and cards */
+    width: 90%;
+    max-width: 600px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    /* border: 1px solid #ccc; */
+    border-radius: 4px;
+    padding: 20px;
+    z-index: 1;
+    
+  }
+  
+  .descriptor-button {
+    margin: 5px;
+    transition: transform 0.3s ease; /* Add transition for smooth effect */
+
+  }
+  
+  .selected {
+    background-color: #ccc;
+  }
+  
+  .next-button {
+    margin-top: 10px;
+  }
+  
+  .descriptor-button-container {
+    position: relative;
+    transition: transform 0.5s ease; /* Adjust the transition duration as needed */
+  }
+  
+  .selected-card-descriptors {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .bad-descriptors,
+  .good-descriptors {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .agreement-question {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    width: 90%;
+    padding: 1em;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.agreement-question {
+  display: flex;
+  flex-direction: column; /* Keeps the paragraph and button container stacking vertically */
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+  width: 90%;
+  padding: 1em;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.agreement-question p {
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+/* New rule to style the button container */
+.agreement-question .button-container {
+  display: flex;
+  flex-direction: row; /* Arrange the buttons horizontally */
+  justify-content: center; /* Center the buttons */
+  gap: 1em; /* Add some gap between the buttons */
+}
+
+.agreement-question button {
+  margin: 0.5em;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+  background-color: #6CB574;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.agreement-question button:hover {
+  background-color: #8dc391;
+}

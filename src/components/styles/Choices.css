@@ -1,0 +1,42 @@
+.choices {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1em;
+  font-size: 1em;
+}
+
+.button {
+  background: #6CB574;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* font-size: 16px; */
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 90%;
+  margin: 0.5em auto;
+  font-size: 1.3em;
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    width: 70%;
+  }
+}
+
+.button:hover {
+  color: white;
+}
+
+.button:disabled {
+  background: white;
+  color: white;
+  cursor: not-allowed;
+  transition: none; /* Remove the transition effect */
+  opacity: 0;
+}
