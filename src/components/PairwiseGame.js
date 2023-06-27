@@ -49,6 +49,8 @@ const PairwiseGame = ({ technologies, finishGame }) => {
   const [scoreIndex, setScoreIndex] = useState(0);
   const [agreementAnswer, setAgreementAnswer] = useState(null);
   const [showDescriptorImages, setShowDescriptorImages] = useState(false);
+  const [agreementResult, setAgreementResult] = useState(null);
+  const [showAgreementResult, setShowAgreementResult] = useState(false);
 
   useEffect(() => {
     if (technologies.length > 0) {
@@ -121,36 +123,12 @@ const PairwiseGame = ({ technologies, finishGame }) => {
     const chosenCard = chosenIndex % 2 === 0 ? 0 : 1;
 
     setSelectedCard(shuffledTechnologies[currentPairIndex][chosenCard]);
-    const percentCard = shuffledTechnologies[currentPairIndex][chosenCard];
-    const unpercentCard =
-      shuffledTechnologies[currentPairIndex][(chosenCard + 1) % 2];
+
     setSelectedIndex(chosenIndex);
 
     setUnselectedCard(
       shuffledTechnologies[currentPairIndex][(chosenCard + 1) % 2]
     );
-
-    const foundComparison = Comparisons.comparisons.find(
-      (comp) =>
-        comp.title1 === percentCard.title && comp.title2 === unpercentCard.title
-    );
-    setScoreIndex((scoreIndex) => scoreIndex + 1);
-
-    // Update the score based on the selectedPercent
-    if (foundComparison) {
-      setScore((prevScore) => prevScore + (100 - foundComparison.percent1));
-      setSelectedPercent(foundComparison.percent1);
-      setUnselectedPercent(foundComparison.percent2);
-    } else {
-      setScore((prevScore) => prevScore);
-      const wrongOrder = Comparisons.comparisons.find(
-        (comp) =>
-          comp.title1 === unpercentCard.title &&
-          comp.title2 === percentCard.title
-      );
-      setSelectedPercent(wrongOrder.percent2);
-      setUnselectedPercent(wrongOrder.percent1);
-    }
 
     setSelectionMade(true);
     setAgreementAnswer(null);
@@ -178,6 +156,80 @@ const PairwiseGame = ({ technologies, finishGame }) => {
   };
 
   const handleAgreementAnswer = (answer) => {
+    console.log(selectedCard.title, unselectedCard.title, answer);
+
+    const percentCard = selectedCard;
+    const unpercentCard = unselectedCard;
+    const foundComparison = Comparisons.comparisons.find(
+      (comp) =>
+        comp.title1 === percentCard.title && comp.title2 === unpercentCard.title
+    );
+    setScoreIndex((scoreIndex) => scoreIndex + 1);
+
+    // Update the score based on the selectedPercent
+    if (foundComparison && answer === "yes") {
+      setAgreementResult("Correct");
+      setScore((prevScore) => prevScore + 10);
+      setSelectedPercent(foundComparison.percent1);
+      setUnselectedPercent(foundComparison.percent2);
+    }
+    if (foundComparison && answer === "no") {
+      setAgreementResult("Incorrect");
+      setScore((prevScore) => prevScore);
+      setSelectedPercent(foundComparison.percent1);
+      setUnselectedPercent(foundComparison.percent2);
+    }
+    if (foundComparison && answer === "unsure") {
+      setAgreementResult(null);
+
+      setScore((prevScore) => prevScore);
+      setSelectedPercent(foundComparison.percent1);
+      setUnselectedPercent(foundComparison.percent2);
+    }
+
+    if (!foundComparison && answer === "yes") {
+      setAgreementResult("Incorrect");
+
+      setScore((prevScore) => prevScore);
+      const wrongOrder = Comparisons.comparisons.find(
+        (comp) =>
+          comp.title1 === unpercentCard.title &&
+          comp.title2 === percentCard.title
+      );
+      setSelectedPercent(wrongOrder.percent2);
+      setUnselectedPercent(wrongOrder.percent1);
+    }
+
+    if (!foundComparison && answer === "no") {
+      setAgreementResult("Correct");
+
+      setScore((prevScore) => prevScore + 10);
+      const wrongOrder = Comparisons.comparisons.find(
+        (comp) =>
+          comp.title1 === unpercentCard.title &&
+          comp.title2 === percentCard.title
+      );
+      setSelectedPercent(wrongOrder.percent2);
+      setUnselectedPercent(wrongOrder.percent1);
+    }
+
+    if (!foundComparison && answer === "unsure") {
+      setAgreementResult(null);
+      setScore((prevScore) => prevScore);
+      const wrongOrder = Comparisons.comparisons.find(
+        (comp) =>
+          comp.title1 === unpercentCard.title &&
+          comp.title2 === percentCard.title
+      );
+      setSelectedPercent(wrongOrder.percent2);
+      setUnselectedPercent(wrongOrder.percent1);
+    }
+    setShowAgreementResult(true); // Initially set showAgreementResult to true
+
+    setTimeout(() => {
+      setShowAgreementResult(false); // After a second, set showAgreementResult back to false
+    }, 1500);
+
     setShowDescriptorImages(true);
     setAgreementAnswer(answer);
   };
@@ -266,9 +318,19 @@ const PairwiseGame = ({ technologies, finishGame }) => {
               </div>
             )}
           </div>
+          {selectedCard && agreementAnswer && showAgreementResult && (
+            <div className="agreement-question">
+              <p>Do most people agree with you?</p>
+
+              <div className="button-container">
+                <p>{agreementResult}</p>
+              </div>
+            </div>
+          )}
           {selectedCard && !agreementAnswer && (
             <div className="agreement-question">
-              <p>Do you think most people agree with you?</p>
+              <p>Do most people agree with you?</p>
+
               <div className="button-container">
                 <button onClick={() => handleAgreementAnswer("yes")}>
                   Yes
@@ -280,7 +342,7 @@ const PairwiseGame = ({ technologies, finishGame }) => {
               </div>
             </div>
           )}
-          {selectedCard && showDescriptorImages && (
+          {selectedCard && showDescriptorImages && !showAgreementResult && (
             <MoralDescriptors
               moralDescriptors={moralDescriptors}
               handleNextCards={handleNextCards}

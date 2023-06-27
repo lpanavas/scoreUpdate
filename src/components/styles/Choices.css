@@ -8,7 +8,7 @@
 }
 
 .button {
-  background: #6CB574;
+  background: #4CAF50;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -28,10 +28,23 @@
     width: 70%;
   }
 }
+.pulse:hover, 
+.pulse:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em transparent;
+}
+
+
 
 .button:hover {
   color: white;
+  animation: infinite pulse 1s;
+  box-shadow: 0 0 0 1em transparent;
 }
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 #4CAF50; }
+  }
 
 .button:disabled {
   background: white;

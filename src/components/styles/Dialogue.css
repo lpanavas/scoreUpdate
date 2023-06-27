@@ -1,47 +1,54 @@
 /* dialogue.css */
 .dialogue {
     border-radius: 1.2em;
-    padding: .7em;
-    margin: .8em;
+    padding: 0.7em;
+    margin: 0.8em;
     max-width: 100%;
     font-size: 1.3em;
-    padding:1.2em;
-  }
-  
-  .dialogue.guide {
+}
+
+.dialogue.guide {
     align-self: flex-start;
     background-color: #f1f1f1;
     color: #000; /* Set consistent text color */
     max-width: 70%;
     font-size: 1.3em;
+    padding: 20px;
+}
 
-  }
-  
-  .dialogue.choice {
+.dialogue.choice {
     align-self: flex-end;
-    background-color: #6C88B5; /* Updated color choice */
+    background-color: #3F51B5; /* Updated color choice */
     color: white;
-    text-align: right;
+    padding: 20px;
+    text-align: left;
     max-width: 40%;
     font-size: 1.3em;
-  }
-  .pre-dialogue{
+}
+.pre-dialogue {
     border-radius: 1.2em;
-    padding: .7em;
-    margin: .8em;
+    padding: 0.7em;
+    margin: 0.8em;
     max-width: 100%;
     font-size: 1.3em;
     align-self: flex-start;
     background-color: #f1f1f1;
     color: #000; /* Set consistent text color */
     max-width: 70%;
-  
-  
-  }
-  
-  @media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 768px) {
     .dialogue {
-      max-width: 80%;
+        max-width: 80%;
     }
-  }
-  
+}
+
+@media screen and (max-width: 481px) {
+    .dialogue.guide {
+        max-width: 90%;
+    }
+
+    .dialogue.guide, .dialogue.choice {
+        font-size: 1.1em;
+    }
+}

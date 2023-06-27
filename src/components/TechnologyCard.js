@@ -23,7 +23,7 @@ const TechnologyCard = ({
   const props = useSpring({
     from: { opacity: 0, transform: "scale(0)" },
     to: {
-      opacity: selectionMade && !clicked ? 0.5 : 1,
+      opacity: selectionMade && !clicked ? 0.7 : 1,
       transform: "scale(1)",
     },
     config: { tension: 210, friction: 20 },

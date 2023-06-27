@@ -1,74 +1,97 @@
 .technology-card {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: .5em;
-  min-height: 10vh;
-  cursor: pointer;
-  position: relative;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
-  z-index: 2;
-  display: flex;
+    border: 1px solid #8f8e8e;
+    min-height: 15vh;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    z-index: 2;
+    display: flex;
+    margin-top: 25px;
+    
+    
 }
 
 .technology-card:hover {
-  background-color: #f5f5f5;
-  transform: translateY(-3px);
+    background: #2ee59d;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: white;
 }
 
-/* .technology-card.clicked {
-  background-color: #ccc;
-} */
+
+
+
+.technology-card.clicked {
+    background:#88E4E4;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+}
+
 
 .left-column,
 .right-column {
-  position: absolute; /* positions the columns outside of the card */
-  width: 20px; /* set the width of the small columns */
-  height: 100%; /* set the column height to be 100% of the card */
-  background-color: #f5f5f5; /* set the column background color */
-  bottom: 0; /* aligns the columns to the bottom of the card */
+    position: absolute; /* positions the columns outside of the card */
+    width: 20px; /* set the width of the small columns */
+    height: 100%; /* set the column height to be 100% of the card */
+    bottom: 0; /* aligns the columns to the bottom of the card */
+    background-color: rgba(221, 221, 221, 0.89);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    transition: height 0.5s ease-out;  /* Add transition */
+
 }
 
 .left-column {
-  left: -30px; /* positions the left column to the left of the card */
+    left: -30px; /* positions the left column to the left of the card */
 }
 
 .right-column {
-  right: -30px; /* positions the right column to the right of the card */
+    right: -30px; /* positions the right column to the right of the card */
 }
-
-.bar-chart {
-  width: 100%;
-  height: 100%;
-}
-
-.bar {
-  width: 100%;
-  position: absolute;
-  bottom: 0; /* aligns the bar to the bottom of the column */
-}
-
 .bar.selected {
-  background-color: blue;
+    background-color: #6cb574;
 }
 
 .bar.unselected {
-  background-color: red;
-}
+    background-color: #6cb574  ;
+} 
+
+.bar-chart {
+    width: 100%;
+    height: 100%;
+} 
+
+.bar {
+    width: 20px;
+    height: 40px;
+    position: absolute;
+    bottom: 0; 
+    transition: height 0.5s ease-out;  /* Add transition */
+    border-radius: 1em;
+} 
+
 
 .main-column {
-  width: 100%;
-  z-index: 1;
+    width: 100%;
+    z-index: 1;
 }
 
 .percentage-div {
-  width: 100%;
+    width: 100%;
 }
 
 @keyframes grow {
-  0% {
-    height: 0;
-  }
-  100% {
-    height: 100%;
-  }
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 100%;
+    }
 }
