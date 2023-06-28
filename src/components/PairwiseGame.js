@@ -228,7 +228,7 @@ const PairwiseGame = ({ technologies, finishGame }) => {
 
     setTimeout(() => {
       setShowAgreementResult(false); // After a second, set showAgreementResult back to false
-    }, 1500);
+    }, 2000);
 
     setShowDescriptorImages(true);
     setAgreementAnswer(answer);
@@ -303,53 +303,61 @@ const PairwiseGame = ({ technologies, finishGame }) => {
             Which technology do you prefer to be used on you or your loved ones?
             Facial recognition to ...
           </h2>
+          <div className="bottomHalf">
+            <div className="technology-pair">
+              {currentPairIndex < shuffledTechnologies.length && (
+                <>
+                  {renderTechnologyCard(0)}
 
-          <div className="technology-pair">
-            {currentPairIndex < shuffledTechnologies.length && (
-              <>
-                {renderTechnologyCard(0)}
+                  {renderTechnologyCard(1)}
+                </>
+              )}
+              {selectedCard ? null : (
+                <div className="descriptors">
+                  <Button text="Skip" onClick={handleSkip} />
+                </div>
+              )}
+            </div>
+            {selectedCard && agreementAnswer && showAgreementResult && (
+              <div className="agreement-question">
+                <h3>Do most people agree with you?</h3>
 
-                {renderTechnologyCard(1)}
-              </>
-            )}
-            {selectedCard ? null : (
-              <div className="descriptors">
-                <Button text="Skip" onClick={handleSkip} />
+                <div className="button-container">
+                  <p
+                    className={
+                      agreementResult === "Correct" ? "correct" : "incorrect"
+                    }
+                  >
+                    {agreementResult}
+                  </p>
+                </div>
               </div>
             )}
+            {selectedCard && !agreementAnswer && (
+              <div className="agreement-question">
+                <h3>Do most people agree with you?</h3>
+
+                <div className="button-container">
+                  <button onClick={() => handleAgreementAnswer("yes")}>
+                    Yes
+                  </button>
+                  <button onClick={() => handleAgreementAnswer("no")}>
+                    No
+                  </button>
+                  <button onClick={() => handleAgreementAnswer("unsure")}>
+                    Unsure
+                  </button>
+                </div>
+              </div>
+            )}
+            {selectedCard && showDescriptorImages && !showAgreementResult && (
+              <MoralDescriptors
+                moralDescriptors={moralDescriptors}
+                handleNextCards={handleNextCards}
+              />
+            )}
+            <ScoreBar score={score} />
           </div>
-          {selectedCard && agreementAnswer && showAgreementResult && (
-            <div className="agreement-question">
-              <p>Do most people agree with you?</p>
-
-              <div className="button-container">
-                <p>{agreementResult}</p>
-              </div>
-            </div>
-          )}
-          {selectedCard && !agreementAnswer && (
-            <div className="agreement-question">
-              <p>Do most people agree with you?</p>
-
-              <div className="button-container">
-                <button onClick={() => handleAgreementAnswer("yes")}>
-                  Yes
-                </button>
-                <button onClick={() => handleAgreementAnswer("no")}>No</button>
-                <button onClick={() => handleAgreementAnswer("unsure")}>
-                  Unsure
-                </button>
-              </div>
-            </div>
-          )}
-          {selectedCard && showDescriptorImages && !showAgreementResult && (
-            <MoralDescriptors
-              moralDescriptors={moralDescriptors}
-              handleNextCards={handleNextCards}
-            />
-          )}
-
-          <ScoreBar score={score} />
         </>
       )}
       {gameOver && <Rankings rankings={rankings} finishGame={finishGame} />}

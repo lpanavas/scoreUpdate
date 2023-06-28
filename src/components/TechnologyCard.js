@@ -48,30 +48,32 @@ const TechnologyCard = ({
       onClick={handleClick}
     >
       <div className="main-column">
+        <h3>{tech.title}</h3>
+        {agreementAnswer && (
+          <div className="percentage-display">
+            {index === 0 ? percent.selectedCard : percent.unselectedCard}%
+          </div>
+        )}
         <div className="percentage-div">
-          <h3>{tech.title}</h3>
-        </div>
-      </div>
-      {agreementAnswer && index === 0 && (
-        <div className="left-column">
-          <div className="bar-chart">
+          {agreementAnswer && index === 0 && (
             <div
               className="bar selected"
               style={{ height: `${percent.selectedCard}%` }}
             ></div>
-          </div>
-        </div>
-      )}
-      {agreementAnswer && index === 1 && (
-        <div className="right-column">
-          <div className="bar-chart">
+          )}
+          {agreementAnswer && index === 1 && (
             <div
               className="bar unselected"
               style={{ height: `${percent.unselectedCard}%` }}
             ></div>
-          </div>
+          )}
+          {clicked && (
+            <div className="checked-div">
+              <i className="fas fa-check"></i>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </a.div>
   );
 };

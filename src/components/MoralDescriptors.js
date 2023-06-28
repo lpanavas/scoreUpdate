@@ -72,6 +72,9 @@ const MoralDescriptors = ({ moralDescriptors, handleNextCards }) => {
   const handleButtonClick = (selectedImage) => {
     setButtonProps({ scale: 1.1 });
     handleImageSelection(selectedImage);
+
+    // Reset the button scale after a short period of time
+    setTimeout(() => setButtonProps({ scale: 1 }), 150);
   };
 
   return (

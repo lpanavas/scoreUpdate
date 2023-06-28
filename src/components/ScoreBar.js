@@ -16,7 +16,7 @@ const ScoreBar = ({ score }) => {
   }, [score]);
 
   const barProps = useSpring({
-    backgroundColor: displayChange ? "#88E4E4" : "#ccc",
+    // backgroundColor: displayChange ? "#88E4E4" : "#ccc",
     config: { tension: 210, friction: 20 },
   });
 
