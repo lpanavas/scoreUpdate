@@ -112,6 +112,7 @@ const PairwiseGame = ({ technologies, finishGame }) => {
   };
 
   const handleChoice = (chosenIndex) => {
+    console.log(chosenIndex);
     // Adjustments to handle new shuffledTechnologies format
     setDescriptorClickTimes([]);
     setFirstClickTime(Date.now());
@@ -156,14 +157,15 @@ const PairwiseGame = ({ technologies, finishGame }) => {
   };
 
   const handleAgreementAnswer = (answer) => {
-    console.log(selectedCard.title, unselectedCard.title, answer);
-
+    console.log(selectedCard, unselectedCard);
     const percentCard = selectedCard;
     const unpercentCard = unselectedCard;
+    console.log(percentCard);
     const foundComparison = Comparisons.comparisons.find(
       (comp) =>
         comp.title1 === percentCard.title && comp.title2 === unpercentCard.title
     );
+    console.log(foundComparison);
     setScoreIndex((scoreIndex) => scoreIndex + 1);
 
     // Update the score based on the selectedPercent
@@ -198,6 +200,7 @@ const PairwiseGame = ({ technologies, finishGame }) => {
       );
       setSelectedPercent(wrongOrder.percent2);
       setUnselectedPercent(wrongOrder.percent1);
+      console.log(wrongOrder);
     }
 
     if (!foundComparison && answer === "no") {
@@ -225,7 +228,7 @@ const PairwiseGame = ({ technologies, finishGame }) => {
       setUnselectedPercent(wrongOrder.percent1);
     }
     setShowAgreementResult(true); // Initially set showAgreementResult to true
-
+    console.log(foundComparison);
     setTimeout(() => {
       setShowAgreementResult(false); // After a second, set showAgreementResult back to false
     }, 2000);
