@@ -31,8 +31,9 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    width: 18vh; /* Adjust this value as needed */
-    height: 14vh; /* Changed to maintain the aspect ratio of the images */
+    height: 35vw;
+    max-height: 15em;
+    width: auto;
     display: block; /* Added to make the button take the full size of its parent */
 }
 

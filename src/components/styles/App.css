@@ -44,7 +44,9 @@ h6,p {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 2em 1.5em;
+    padding-top:1.5em;
+    padding-left: 2em;
+    padding-right: 2em;
     border: none;
     box-sizing: border-box;
 }
