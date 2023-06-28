@@ -175,8 +175,8 @@
   
   .agreement-question button:hover,
   .agreement-question button:focus {
-    background: #2ee59d;
-    color: white;
+ 
+   
     transform: translateY(-5px);
   }
   

@@ -79,7 +79,7 @@ const MoralDescriptors = ({ moralDescriptors, handleNextCards }) => {
 
   return (
     <div className="moral-descriptors">
-      <h3>How does this technology make you feel?</h3>
+      <h3>How would you describe this technology?</h3>
       <div className="image-container">
         {transitions((style, item) => (
           <>

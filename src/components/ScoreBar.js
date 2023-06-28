@@ -11,12 +11,12 @@ const ScoreBar = ({ score }) => {
     setScoreChange(score - previousScore);
     setPreviousScore(score);
     setDisplayChange(true);
-    const timeout = setTimeout(() => setDisplayChange(false), 1000); // hide score change after 1 second
+    const timeout = setTimeout(() => setDisplayChange(false), 2000); // hide score change after 1 second
     return () => clearTimeout(timeout);
   }, [score]);
 
   const barProps = useSpring({
-    // backgroundColor: displayChange ? "#88E4E4" : "#ccc",
+    backgroundColor: displayChange ? "#26925F" : "#7758FF",
     config: { tension: 210, friction: 20 },
   });
 

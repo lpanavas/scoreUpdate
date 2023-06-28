@@ -15,7 +15,7 @@ const TechnologyCard = ({
 
   const selectedCardProps = useSpring({
     to: clicked
-      ? { scale: 1.02, boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)" }
+      ? { scale: 1.04, boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)" }
       : {},
     config: { tension: 210, friction: 20 },
   });
@@ -23,7 +23,7 @@ const TechnologyCard = ({
   const props = useSpring({
     from: { opacity: 0, transform: "scale(0)" },
     to: {
-      opacity: selectionMade && !clicked ? 0.7 : 1,
+      opacity: selectionMade && !clicked ? 0.3 : 1,
       transform: "scale(1)",
     },
     config: { tension: 210, friction: 20 },
@@ -67,11 +67,11 @@ const TechnologyCard = ({
               style={{ height: `${percent.unselectedCard}%` }}
             ></div>
           )}
-          {clicked && (
+          {/* {clicked && (
             <div className="checked-div">
               <i className="fas fa-check"></i>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </a.div>

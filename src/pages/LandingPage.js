@@ -3,6 +3,7 @@ import robotLogo from "../images/robot-logo.png";
 import "../components/styles/LandingPage.css";
 
 function LandingPage({ onStartGame }) {
+  console.log("landingPage");
   return (
     <div className="landing-page">
       <h1>Welcome to Game with AIm!</h1>
