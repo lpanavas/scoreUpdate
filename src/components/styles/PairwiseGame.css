@@ -86,8 +86,7 @@
     background-color: rgba(119, 88, 255, 0.12);
     color: rgba(119, 88, 255, 1); 
     font-weight: bold; 
-    font-size: 1em;
-}
+    font-size: calc(.8rem + .7vw)}
   
   .descriptors button:hover {
     background: black;

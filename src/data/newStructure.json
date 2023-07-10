@@ -1,6 +1,5 @@
 {
   "order": ["pairwise_comparison", "pairwise_comparison2"],
-
   "games": {
     "pairwise_comparison": {
       "technologies": [

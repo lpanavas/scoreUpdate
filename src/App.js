@@ -1,50 +1,72 @@
 import React, { useState, useEffect } from "react";
 import LandingPage from "./pages/LandingPage";
 import GamePage from "./pages/GamePage";
-import newStructure from "./data/newStructure.json";
+import ResultsPage from "./pages/ResultsPage";
+import cards from "./data/cards.json";
 import "./components/styles/App.css";
+import axios from "axios";
 
+function generateID(length = 16) {
+  return Math.random().toString(36).substr(2, length);
+}
 function App() {
-  const [showGame, setShowGame] = useState(false);
-  const [currentPosition, setCurrentPosition] = useState(0);
-  const [currentKey, setCurrentKey] = useState(newStructure.order[0]);
+  const [userID, setUserID] = useState(generateID());
 
-  useEffect(() => {
-    if (currentPosition < newStructure.order.length) {
-      setCurrentKey(newStructure.order[currentPosition]);
-    } else {
-      setCurrentKey(null);
-    }
-  }, [currentPosition]);
+  const [currentPage, setCurrentPage] = useState("landing");
+  const [selectedCards, setSelectedCards] = useState([]);
+  const [outputData, setOutputData] = useState([]);
+  const [skipDemographics, setSkipDemographics] = useState(null);
+  const [demographics, setDemographics] = useState(null);
 
-  const isCurrentPositionGame = Object.keys(newStructure.games).includes(
-    currentKey
-  );
-
-  const finishGame = (chosenOptionIndex, chosenDescriptors) => {
-    if (isCurrentPositionGame) {
-      setCurrentPosition((prevPosition) => prevPosition + 1);
-    }
-  };
-  console.log(currentKey);
-  const currentPath = currentKey ? newStructure.games[currentKey] : null;
-  const currentPrompt = currentPath ? currentPath.prompt : null;
   const handleStartGame = () => {
-    console.log("current Path: ", currentPath);
-    setCurrentPosition(0);
-    setShowGame(true);
+    const shuffledCards = [...cards].sort(() => 0.5 - Math.random());
+    setSelectedCards(shuffledCards.slice(0, 5));
+    setCurrentPage("game");
   };
 
+  const handleRestartGame = () => {
+    const shuffledCards = [...cards].sort(() => 0.5 - Math.random());
+    setSelectedCards(shuffledCards.slice(0, 5));
+    setCurrentPage("game");
+  };
+
+  const saveGameData = (userID, outputData) => {
+    axios
+      .post("http://localhost:5000/data/add", { userID, outputData })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log("Error: " + err));
+  };
+  useEffect(() => {
+    if (currentPage === "results") {
+      saveGameData(userID, outputData);
+    }
+  }, [outputData, currentPage, userID]);
+  const finishGame = () => {
+    setSkipDemographics(true);
+    setCurrentPage("results");
+  };
   return (
     <div className="app">
-      {showGame && currentPath ? (
-        <GamePage
-          gamePath={currentPath}
-          finishGame={finishGame}
-          prompt={currentPrompt}
-        />
-      ) : (
+      {currentPage === "landing" && (
         <LandingPage onStartGame={handleStartGame} />
+      )}
+      {currentPage === "game" && (
+        <GamePage
+          gameCards={selectedCards}
+          finishGame={finishGame}
+          setOutputData={setOutputData}
+          skipDemographics={skipDemographics}
+          demographics={demographics}
+          setDemographics={setDemographics}
+          userID={userID}
+        />
+      )}
+      {currentPage === "results" && (
+        <ResultsPage
+          onRestartGame={handleRestartGame}
+          outputData={outputData}
+          selectedCards={selectedCards}
+        />
       )}
     </div>
   );

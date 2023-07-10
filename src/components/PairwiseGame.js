@@ -1,34 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { useSpring, animated as a } from "react-spring"; // Added this line
-import { useTrail, animated as b } from "react-spring";
+
 import TechnologyCard from "./TechnologyCard";
 import Rankings from "./Rankings";
 import ScoreBar from "./ScoreBar";
 import Comparisons from "../data/comparisons.json";
-import ScoreLine from "./ScoreLine";
-import TwoScoreLine from "./TwoScoreLine";
+
 import MoralDescriptors from "./MoralDescriptors";
 import Button from "./Button";
+import DemographicCollection from "./DemographicCollection";
 import "./styles/PairwiseGame.css";
 
 const moralDescriptors = ["Authority", "Fair"];
 
-const firstBad = ["Harmful", "Unjust", "Disloyal", "Disobedient", "Indecent"];
-const firstGood = ["Protective", "Impartial", "Loyal", "Respectful", "Decent"];
-const secondBad = [
-  "Violent",
-  "Discriminatory",
-  "Traitor",
-  "Defiant",
-  "Obscene",
-];
-const secondGood = ["Caring", "Fair", "Devoted", "Lawful", "Virtuous"];
-const descriptors = {
-  firstDescriptors: [...firstBad, ...firstGood],
-  secondDescriptors: [...secondBad, ...secondGood],
-};
-
-const PairwiseGame = ({ technologies, finishGame }) => {
+const PairwiseGame = ({
+  technologies,
+  pairwiseData,
+  finishGame,
+  skipDemographics,
+  demographics,
+  setDemographics,
+  setOutputData,
+  userID,
+}) => {
   const [shuffledTechnologies, setShuffledTechnologies] = useState([]);
 
   const [currentPairIndex, setCurrentPairIndex] = useState(0);
@@ -51,11 +44,18 @@ const PairwiseGame = ({ technologies, finishGame }) => {
   const [showDescriptorImages, setShowDescriptorImages] = useState(false);
   const [agreementResult, setAgreementResult] = useState(null);
   const [showAgreementResult, setShowAgreementResult] = useState(false);
+  // Add these to your current list of useState calls
+  const [cardMatchups, setCardMatchups] = useState([]);
+  const [moralChoices, setMoralChoices] = useState({});
+  const [sendToDemographicData, setSendToDemographicData] = useState();
+  const [riskAnswer, setRiskAnswer] = useState(null);
+  const [riskAnswerOuput, setRiskAnswerOutput] = useState({});
 
   useEffect(() => {
     if (technologies.length > 0) {
       // Shuffle technologies array
       let shuffledTechnologies = [...technologies];
+
       for (let i = shuffledTechnologies.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         [shuffledTechnologies[i], shuffledTechnologies[j]] = [
@@ -64,20 +64,26 @@ const PairwiseGame = ({ technologies, finishGame }) => {
         ];
       }
 
-      // Create pairs from the shuffled technologies array
       let tempShuffledTechnologies = [];
-      for (let i = 0; i < shuffledTechnologies.length; i += 2) {
-        tempShuffledTechnologies.push([
+      for (let i = 0; i < shuffledTechnologies.length; i++) {
+        let pair1 = [
           shuffledTechnologies[i],
-          shuffledTechnologies[i + 1],
-        ]);
+          shuffledTechnologies[
+            (i - 1 + shuffledTechnologies.length) % shuffledTechnologies.length
+          ],
+        ];
+        tempShuffledTechnologies.push(pair1);
       }
 
-      // Limit the length of tempShuffledTechnologies to match the length of technologies
-      tempShuffledTechnologies = tempShuffledTechnologies.slice(
-        0,
-        technologies.length
-      );
+      // Shuffle tempShuffledTechnologies
+      for (let i = tempShuffledTechnologies.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [tempShuffledTechnologies[i], tempShuffledTechnologies[j]] = [
+          tempShuffledTechnologies[j],
+          tempShuffledTechnologies[i],
+        ];
+      }
+
       setShuffledTechnologies(tempShuffledTechnologies);
 
       // Use the original technologies array for the initial rankings
@@ -96,23 +102,50 @@ const PairwiseGame = ({ technologies, finishGame }) => {
   }, [technologies]);
 
   useEffect(() => {
-    if (currentPairIndex >= technologies.length / 2) {
+    if (currentPairIndex >= technologies.length) {
+      setSendToDemographicData({
+        UserID: userID, // this should be fetched dynamically
+        demographics: demographics,
+        risk: riskAnswerOuput,
+
+        CardMatchups: cardMatchups,
+        Moral: moralChoices,
+      });
+
+      // Output the final JSON
+      console.log(skipDemographics);
+      if (skipDemographics && currentPairIndex >= shuffledTechnologies.length) {
+        const finalData = {
+          UserID: userID, // this should be fetched dynamically
+          demographics: demographics,
+          risk: riskAnswerOuput,
+          CardMatchups: cardMatchups,
+          Moral: moralChoices,
+        };
+
+        setOutputData(finalData);
+        finishGame(); // Call the finishGame function
+      }
       setGameOver(true);
     }
-  }, [currentPairIndex, technologies.length]);
-
+  }, [
+    currentPairIndex,
+    technologies.length,
+    shuffledTechnologies.length,
+    skipDemographics,
+    finishGame,
+  ]);
   useEffect(() => {
     calculateProgress();
   }, [currentPairIndex]);
 
   const calculateProgress = () => {
-    const totalPairs = Math.floor(technologies.length / 2);
+    const totalPairs = Math.floor(technologies.length);
     const currentProgress = (currentPairIndex / totalPairs) * 100;
     setProgress(currentProgress);
   };
 
   const handleChoice = (chosenIndex) => {
-    console.log(chosenIndex);
     // Adjustments to handle new shuffledTechnologies format
     setDescriptorClickTimes([]);
     setFirstClickTime(Date.now());
@@ -141,7 +174,6 @@ const PairwiseGame = ({ technologies, finishGame }) => {
       selectedCard: selectedPercent,
       unselectedCard: unselectedPercent,
     };
-
     return (
       <TechnologyCard
         key={tech.title}
@@ -156,79 +188,101 @@ const PairwiseGame = ({ technologies, finishGame }) => {
     );
   };
 
+  const handleRiskAnswer = (answer) => {
+    setRiskAnswerOutput((prevAnswers) => {
+      const updatedAnswers = { ...prevAnswers, [selectedCard.ID]: answer };
+      return updatedAnswers;
+    });
+    setRiskAnswer(null);
+  };
+
   const handleAgreementAnswer = (answer) => {
-    console.log(selectedCard, unselectedCard);
     const percentCard = selectedCard;
     const unpercentCard = unselectedCard;
-    console.log(percentCard);
-    const foundComparison = Comparisons.comparisons.find(
-      (comp) =>
-        comp.title1 === percentCard.title && comp.title2 === unpercentCard.title
-    );
-    console.log(foundComparison);
-    setScoreIndex((scoreIndex) => scoreIndex + 1);
+    setAgreementResult("Correct");
+    setScore((prevScore) => prevScore + 10);
+    setSelectedPercent(49);
+    setUnselectedPercent(51);
+    setRiskAnswer("show");
 
-    // Update the score based on the selectedPercent
-    if (foundComparison && answer === "yes") {
-      setAgreementResult("Correct");
-      setScore((prevScore) => prevScore + 10);
-      setSelectedPercent(foundComparison.percent1);
-      setUnselectedPercent(foundComparison.percent2);
-    }
-    if (foundComparison && answer === "no") {
-      setAgreementResult("Incorrect");
-      setScore((prevScore) => prevScore);
-      setSelectedPercent(foundComparison.percent1);
-      setUnselectedPercent(foundComparison.percent2);
-    }
-    if (foundComparison && answer === "unsure") {
-      setAgreementResult(null);
+    setCardMatchups([
+      ...cardMatchups,
+      {
+        Card1: shuffledTechnologies[currentPairIndex][0].ID,
+        Card2: shuffledTechnologies[currentPairIndex][1].ID,
+        Answer: selectedCard.ID,
+        Majority: answer,
+      },
+    ]);
 
-      setScore((prevScore) => prevScore);
-      setSelectedPercent(foundComparison.percent1);
-      setUnselectedPercent(foundComparison.percent2);
-    }
+    // const foundComparison = Comparisons.comparisons.find(
+    //   (comp) =>
+    //     comp.title1 === percentCard.title && comp.title2 === unpercentCard.title
+    // );
 
-    if (!foundComparison && answer === "yes") {
-      setAgreementResult("Incorrect");
+    // setScoreIndex((scoreIndex) => scoreIndex + 1);
 
-      setScore((prevScore) => prevScore);
-      const wrongOrder = Comparisons.comparisons.find(
-        (comp) =>
-          comp.title1 === unpercentCard.title &&
-          comp.title2 === percentCard.title
-      );
-      setSelectedPercent(wrongOrder.percent2);
-      setUnselectedPercent(wrongOrder.percent1);
-      console.log(wrongOrder);
-    }
+    // // Update the score based on the selectedPercent
+    // if (foundComparison && answer === "yes") {
+    //   setAgreementResult("Correct");
+    //   setScore((prevScore) => prevScore + 10);
+    //   setSelectedPercent(foundComparison.percent1);
+    //   setUnselectedPercent(foundComparison.percent2);
+    // }
+    // if (foundComparison && answer === "no") {
+    //   setAgreementResult("Incorrect");
+    //   setScore((prevScore) => prevScore);
+    //   setSelectedPercent(foundComparison.percent1);
+    //   setUnselectedPercent(foundComparison.percent2);
+    // }
+    // if (foundComparison && answer === "unsure") {
+    //   setAgreementResult(null);
 
-    if (!foundComparison && answer === "no") {
-      setAgreementResult("Correct");
+    //   setScore((prevScore) => prevScore);
+    //   setSelectedPercent(foundComparison.percent1);
+    //   setUnselectedPercent(foundComparison.percent2);
+    // }
 
-      setScore((prevScore) => prevScore + 10);
-      const wrongOrder = Comparisons.comparisons.find(
-        (comp) =>
-          comp.title1 === unpercentCard.title &&
-          comp.title2 === percentCard.title
-      );
-      setSelectedPercent(wrongOrder.percent2);
-      setUnselectedPercent(wrongOrder.percent1);
-    }
+    // if (!foundComparison && answer === "yes") {
+    //   setAgreementResult("Incorrect");
 
-    if (!foundComparison && answer === "unsure") {
-      setAgreementResult(null);
-      setScore((prevScore) => prevScore);
-      const wrongOrder = Comparisons.comparisons.find(
-        (comp) =>
-          comp.title1 === unpercentCard.title &&
-          comp.title2 === percentCard.title
-      );
-      setSelectedPercent(wrongOrder.percent2);
-      setUnselectedPercent(wrongOrder.percent1);
-    }
+    //   setScore((prevScore) => prevScore);
+    //   const wrongOrder = Comparisons.comparisons.find(
+    //     (comp) =>
+    //       comp.title1 === unpercentCard.title &&
+    //       comp.title2 === percentCard.title
+    //   );
+    //   setSelectedPercent(wrongOrder.percent2);
+    //   setUnselectedPercent(wrongOrder.percent1);
+    //   console.log(wrongOrder);
+    // }
+
+    // if (!foundComparison && answer === "no") {
+    //   setAgreementResult("Correct");
+
+    //   setScore((prevScore) => prevScore + 10);
+    //   const wrongOrder = Comparisons.comparisons.find(
+    //     (comp) =>
+    //       comp.title1 === unpercentCard.title &&
+    //       comp.title2 === percentCard.title
+    //   );
+    //   setSelectedPercent(wrongOrder.percent2);
+    //   setUnselectedPercent(wrongOrder.percent1);
+    // }
+
+    // if (!foundComparison && answer === "unsure") {
+    //   setAgreementResult(null);
+    //   setScore((prevScore) => prevScore);
+    //   const wrongOrder = Comparisons.comparisons.find(
+    //     (comp) =>
+    //       comp.title1 === unpercentCard.title &&
+    //       comp.title2 === percentCard.title
+    //   );
+    //   setSelectedPercent(wrongOrder.percent2);
+    //   setUnselectedPercent(wrongOrder.percent1);
+    // }
+
     setShowAgreementResult(true); // Initially set showAgreementResult to true
-    console.log(foundComparison);
     setTimeout(() => {
       setShowAgreementResult(false); // After a second, set showAgreementResult back to false
     }, 2000);
@@ -252,7 +306,6 @@ const PairwiseGame = ({ technologies, finishGame }) => {
       (updatedRankings[unselectedTech].opponents[selectedTech] || 0) - 1;
 
     // Update the descriptors
-
     setRankings(updatedRankings);
     setSelectedDescriptors([]);
     setSelectedCard(null);
@@ -263,6 +316,7 @@ const PairwiseGame = ({ technologies, finishGame }) => {
     setSelectedIndex(null);
     setAgreementAnswer(null);
     setShowDescriptorImages(false);
+    setRiskAnswer(null);
 
     // Now the effect that triggers game over will run if necessary
   };
@@ -272,6 +326,16 @@ const PairwiseGame = ({ technologies, finishGame }) => {
     const firstTech = shuffledTechnologies[currentPairIndex][0].title;
     const secondTech = shuffledTechnologies[currentPairIndex][1].title;
 
+    setCardMatchups([
+      ...cardMatchups,
+      {
+        Card1: shuffledTechnologies[currentPairIndex][0].ID,
+        Card2: shuffledTechnologies[currentPairIndex][1].ID,
+        Answer: "Skip",
+        Majority: "Skip",
+      },
+    ]);
+
     // Update ties and opponents
     updatedRankings[firstTech].ties += 1;
     updatedRankings[secondTech].ties += 1;
@@ -279,8 +343,8 @@ const PairwiseGame = ({ technologies, finishGame }) => {
       updatedRankings[firstTech].opponents[secondTech] || 0;
     updatedRankings[secondTech].opponents[firstTech] =
       updatedRankings[secondTech].opponents[firstTech] || 0;
-    setScoreIndex((scoreIndex) => scoreIndex + 1);
 
+    setScoreIndex((scoreIndex) => scoreIndex + 1);
     setRankings(updatedRankings);
     setSelectedDescriptors([]);
     setSelectedCard(null);
@@ -290,22 +354,21 @@ const PairwiseGame = ({ technologies, finishGame }) => {
     setSelectionMade(false);
     setAgreementAnswer(null);
   };
-  console.log(showDescriptorImages);
+
   return (
     <div className="pairwise-game">
-      <div className="progress-bar">
-        <div
-          className="progress-bar-inner"
-          style={{ width: `${progress}%` }}
-        ></div>
-      </div>
+      {!gameOver && (
+        <div className="progress-bar">
+          <div
+            className="progress-bar-inner"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+      )}
 
       {!gameOver && (
         <>
-          <h2>
-            Which technology do you prefer to be used on you or your loved ones?
-            Facial recognition to ...
-          </h2>
+          <h2>Which technology worries you more?</h2>
           <div className="bottomHalf">
             <div className="technology-pair">
               {currentPairIndex < shuffledTechnologies.length && (
@@ -321,22 +384,31 @@ const PairwiseGame = ({ technologies, finishGame }) => {
                 </div>
               )}
             </div>
-            {selectedCard && agreementAnswer && showAgreementResult && (
-              <div className="agreement-question">
-                <h3>Do most people agree with you?</h3>
+            {selectedCard &&
+              showDescriptorImages &&
+              !showAgreementResult &&
+              riskAnswer && (
+                <div className="agreement-question">
+                  <h3>How would you classify this technology?</h3>
 
-                <div className="button-container">
-                  <p
-                    className={
-                      agreementResult === "Correct" ? "correct" : "incorrect"
-                    }
-                  >
-                    {agreementResult}
-                  </p>
+                  <div className="button-container">
+                    <button onClick={() => handleRiskAnswer("Low")}>
+                      Low Risk
+                    </button>
+                    <button onClick={() => handleRiskAnswer("High")}>
+                      High Risk
+                    </button>
+                    <button onClick={() => handleRiskAnswer("Unacceptable")}>
+                      Unacceptable Risk
+                    </button>
+                    <button onClick={() => handleRiskAnswer("Unsure")}>
+                      Unsure
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )}
-            {selectedCard && !agreementAnswer && (
+              )}
+
+            {selectedCard && !riskAnswer && !agreementAnswer && (
               <div className="agreement-question">
                 <h3>Do most people agree with you?</h3>
 
@@ -353,19 +425,45 @@ const PairwiseGame = ({ technologies, finishGame }) => {
                 </div>
               </div>
             )}
-            {selectedCard && showDescriptorImages && !showAgreementResult && (
-              <MoralDescriptors
-                moralDescriptors={moralDescriptors}
-                handleNextCards={handleNextCards}
-              />
+            {selectedCard && agreementAnswer && showAgreementResult && (
+              <div className="agreement-question">
+                <h3>Do most people agree with you?</h3>
+
+                <div className="button-container">
+                  <p
+                    className={
+                      agreementResult === "Correct" ? "correct" : "incorrect"
+                    }
+                  >
+                    {agreementResult}
+                  </p>
+                </div>
+              </div>
             )}
-            <ScoreBar score={score} />
+            {selectedCard &&
+              showDescriptorImages &&
+              !showAgreementResult &&
+              !riskAnswer && (
+                <MoralDescriptors
+                  moralDescriptors={moralDescriptors}
+                  handleNextCards={handleNextCards}
+                  setMoralChoices={setMoralChoices}
+                  selectedCard={selectedCard}
+                />
+              )}
+            <ScoreBar score={score} currentPairIndex={currentPairIndex} />
           </div>
         </>
       )}
-      {gameOver && <Rankings rankings={rankings} finishGame={finishGame} />}
+      {gameOver && !skipDemographics && (
+        <DemographicCollection
+          finishGame={finishGame}
+          setDemographics={setDemographics}
+          sendToDemographicData={sendToDemographicData}
+          setOutputData={setOutputData}
+        />
+      )}
     </div>
   );
 };
-
 export default PairwiseGame;

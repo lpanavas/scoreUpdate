@@ -1,0 +1,435 @@
+[
+  {
+    "reference": "Amendments 712: AI systems intended to make inferences about personal characteristics of natural persons on the basis of biometric or biometrics-based data, excluding those used for biometric verification whose sole purpose is to confirm a specific natural person's identity.",
+    "title": "AI system designed to infer personal characteristics using biometrics",
+    "ID": "PersonalCharInference",
+    "classification": "High risk",
+    "semanticModel": {
+      "domain": "Any",
+      "purpose": "Infer personal characteristics",
+      "AI_capability": "Biometric Data Analysis",
+      "AI_user": "Any",
+      "AI_subject": "Natural Person"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used as safety components in the management and operation of road traffic",
+    "title": "AI system designed for controlling the safety of road, air, or rail traffic operations.",
+    "ID": "RoadTraffic",
+    "classification": "High risk",
+    "semanticModel": {
+      "domain": "Critical Infrastructure",
+      "purpose": "Controlling Safety of Road Traffic [Management/Operation]",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used as safety components in the management and operation of the supply of water, gas, heating and electricity.",
+    "title": "AI system designed for controlling the safety of water, gas, heating, and electricity operations.",
+    "ID": "WaterGasHeatingElectricity",
+    "classification": "High risk",
+    "semanticModel": {
+      "domain": "Critical Infrastructure",
+      "purpose": "Controlling the safety of water, gas, heating, and electricity [Operations/Management]",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used for the purpose of determining access to educational and vocational training institutions;",
+    "title": "AI system designed for determining access to educational institutions.",
+    "ID": "AccessToEducationalInstitutions",
+    "classification": "High risk",
+    "semanticModel": {
+      "domain": "Employment/Workers Management/Self-Employment",
+      "purpose": "Determining access to educational institutions, Determining admission to educational institutions",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Educational Institution Applicant"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used for the purpose of assigning natural persons to educational and vocational training institutions;",
+    "title": "AI system designed for putting applicants into different educational institutions.",
+    "ID": "AssigningToEducationalInstitutions",
+    "classification": "High risk",
+    "semanticModel": {
+      "domain": "Employment/Workers Management/Self-Employment",
+      "purpose": "Assigning people to educational institutions",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Educational Institution Applicant"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used for the purpose of assessing students in educational and vocational training institutions and for assessing participants in tests commonly required for admission to educational institutions.",
+    "title": "AI system designed for testing students in schools and entrance exams.",
+    "ID": "TestingStudents",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Employment/Workers Management/Self-Employment",
+      "purpose": "Evaluating Learning Outcomes",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Student"
+    }
+  },
+  {
+    "reference": "Amendments 718: AI systems intended to be used for monitoring and detecting prohibited behaviour of students during tests in the context of/within education and vocational training institutions.",
+    "title": "AI system designed for monitoring students during tests.",
+    "ID": "MonitoringStudents",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Education/Vocational Training",
+      "purpose": "Monitoring Student Behaviour",
+      "AI_capability": "Behaviour Detection",
+      "AI_user": "Any",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used for advertising vacancies",
+    "title": "AI system designed for placing targeted job advertisements.",
+    "ID": "AdvertisingVacancies",
+    "classification": "High risk",
+    "semanticModel": {
+      "domain": "Employment/Workers Management/Self-Employment",
+      "purpose": "Placing Targeted Job Advertisements",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Job Seeker"
+    }
+  },
+
+  {
+    "reference": "Annex 3: AI systems intended to be used for screening or filtering applications, evaluating candidates in the course of interviews or tests",
+    "title": "AI system designed for evaluating job applicants",
+    "ID": "EvaluatingJobApplicants",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Employment/Workers Management/Self-Employment",
+      "purpose": "Evaluating Job Candidates",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Job Applicant"
+    }
+  },
+  {
+    "reference": "Annex 3: AI intended to be used for making decisions on promotion and termination of work-related contractual relationships",
+    "title": "AI system designed for making employee promotion and termination decisions",
+    "ID": "PromotionAndTerminationDecisions",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Employment/Workers Management/Self-Employment",
+      "purpose": "Making Promotion Decision/ Making Termination Decision",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Employee"
+    }
+  },
+  {
+    "reference": "Annex 3: AI intended to be used for monitoring and evaluating performance and behavior of persons in such relationships.",
+    "title": "AI system designed for monitoring and evaluating employees",
+    "ID": "MonitoringAndEvaluatingEmployees",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Employment/Workers Management/Self-Employment",
+      "purpose": "[Monitoring/Evaluating] employee [Behavior/Performance]",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Employee"
+    }
+  },
+  {
+    "reference": "Annex 3: AI intended to be used for making decisions on task allocation",
+    "title": "AI system designed for allocating tasks to employees based on behavioural or personality traits.",
+    "ID": "AllocatingTasksToEmployees",
+    "classification": "High risk",
+    "semanticModel": {
+      "domain": "Employment/Workers Management/Self-Employment",
+      "purpose": "Allocating Tasks",
+      "AI_capability": "[Behavior/Personality Trait] Analysis",
+      "AI_user": "Any",
+      "AI_subject": "Employee"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used by public authorities or on behalf of public authorities to evaluate the eligibility of natural persons for public assistance benefits and services",
+    "title": "AI system designed for evaluating people’s eligibility for public welfare and services",
+    "ID": "EvaluatingEligibilityForPublicAssistance",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Public Service/Private Service",
+      "purpose": "Evaluating Eligibility to Access Public Assistance Services",
+      "AI_capability": "Any",
+      "AI_user": "Public Authority",
+      "AI_subject": "Public Service Applicant"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used by public authorities or on behalf of public authorities to  grant, reduce, revoke, or reclaim such benefits and services",
+    "title": "AI system designed for managing public assistance and services",
+    "ID": "ManagingPublicAssistanceAndServices",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Public Service/Private Service",
+      "purpose": "[Granting/Revoking/Reclaiming/Reducing] Public assistance services",
+      "AI_capability": "Any",
+      "AI_user": "Public Authority",
+      "AI_subject": "Public Service Applicant"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used to evaluate the creditworthiness of natural persons or establish their credit score, with the exception of AI systems put into service by small scale providers for their own use",
+    "title": "AI system designed for determining credit score by large-scale lenders.",
+    "ID": "DeterminingCreditScore",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Public Service/Private Service",
+      "purpose": "Assessing Creditworthiness/ Determining Credit Score",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Natural Person"
+    }
+  },
+  {
+    "reference": "Amendments 722: AI systems used for the purpose of detecting financial fraud",
+    "title": "AI systems used for the purpose of detecting financial fraud.",
+    "ID": "DetectingFinancialFraud",
+    "classification": "Low Risk",
+    "semanticModel": {
+      "domain": "Public Service/Private Service",
+      "purpose": "Detecting Financial Fraud.",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Natural Person"
+    }
+  },
+  {
+    "reference": "Amendment 723: AI systems intended to be used for making decisions or materially influencing decisions on the eligibility of natural persons for health and life insurance.",
+    "title": "AI system designed for influencing decisions on insurance eligibility.",
+    "ID": "InsuranceDecisionInfluence",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Public Service/Private Service",
+      "purpose": "Decision Making on Insurance Eligibility",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used to dispatch emergency first response services, including by firefighters and medical aid.",
+    "title": "AI system designed for dispatching emergency services",
+    "ID": "DispatchingEmergencyServices",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Public Service/Private Service",
+      "purpose": "Dispatching Emergency Service",
+      "AI_capability": "Any",
+      "AI_user": "Emergency Service/First Responder",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used to establish priority in the dispatching of emergency first response services, including by firefighters and medical aid.",
+    "title": "AI system designed for establishing priority in the dispatching of emergency services.",
+    "ID": "EstablishingPriorityInDispatchingEmergencyServices",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Public Service/Private Service",
+      "purpose": "Prioritisation Of Emergency Service",
+      "AI_capability": "Any",
+      "AI_user": "Emergency Service/First Responder",
+      "AI_subject": "Any"
+    }
+  },
+
+  {
+    "reference": "Annex 3: AI systems intended to be used by law enforcement authorities for making individual risk assessments of natural persons in order to assess the risk for potential victims of criminal offences",
+    "title": "AI system designed for law enforcement to evaluate individuals' risk of becoming crime victims",
+    "ID": "AssessingRiskForPotentialVictimsOfCriminalOffences",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Law Enforcement",
+      "purpose": "Assessing Risk For Potential Victims Of Criminal Offences",
+      "AI_capability": "Any",
+      "AI_user": "Law Enforcement",
+      "AI_subject": "Suspect/Perpetrator/Victim"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used by law enforcement authorities as polygraphs and similar tools or to detect the emotional state of a natural person",
+    "title": "AI system designed for law enforcement to administer lie detector tests",
+    "ID": "AdministeringLieDetectorTests",
+    "classification": "High risk",
+    "semanticModel": {
+      "domain": "Law Enforcement",
+      "purpose": "Any",
+      "AI_capability": "Emotion Recognition/Lie Detection",
+      "AI_user": "Law Enforcement",
+      "AI_subject": "Natural Person"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used by law enforcement authorities to detect deep fakes as referred to in article 52(3)",
+    "title": "AI system designed for law enforcement to detect deep fakes",
+    "ID": "DetectingDeepFakes",
+    "classification": "Low risk",
+    "semanticModel": {
+      "domain": "Law Enforcement",
+      "purpose": "Deep Fake Detection",
+      "AI_capability": "Any",
+      "AI_user": "Law Enforcement",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used by law enforcement authorities for evaluation of the reliability of evidence in the course of investigation or prosecution of criminal offences",
+    "title": "AI system designed for law enforcement to evaluate evidence in criminal proceedings",
+    "ID": "EvaluatingReliabilityOfEvidence",
+    "classification": "High risk",
+    "semanticModel": {
+      "domain": "Law Enforcement",
+      "purpose": "Evaluating Reliability Of Evidence",
+      "AI_capability": "Any",
+      "AI_user": "Law Enforcement",
+      "AI_subject": "Any"
+    }
+  },
+
+  {
+    "reference": "Annex 3: AI systems intended to be used for crime analytics regarding natural persons, allowing law enforcement authorities to search complex related and unrelated large data sets available in different data sources or in different data formats in order to identify unknown patterns or discover hidden relationships in the data",
+    "title": "AI system designed for law enforcement to study data to find patterns useful in understanding crime",
+    "ID": "StudyingDataToFindPatternsUsefulInUnderstandingCrime",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Law Enforcement",
+      "purpose": "Assessing Personality Traits/Assessing Past Criminal Behavior",
+      "AI_capability": "Profiling",
+      "AI_user": "Law Enforcement",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used by competent public authorities as polygraphs and similar tools or to detect the emotional state of a natural person",
+    "title": "AI system designed for immigration officials to administer lie detector tests",
+    "ID": "AdministeringLieDetectorTestsToImmigrationOfficials",
+    "classification": "High risk",
+    "semanticModel": {
+      "domain": "Migration/Asylum/Border Control Management",
+      "purpose": "Performing Background Checks, Verification of [Migration/Asylum] seeker claims, Border Control Security Checks",
+      "AI_capability": "Emotion Recognition/Lie Detection",
+      "AI_user": "Competent Public Authority",
+      "AI_subject": "Natural Person"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used by competent public authorities to assess a risk, including a security risk, a risk of irregular immigration, or a health risk, posed by a natural person who intends to enter or has entered into the territory of a Member State",
+    "title": "AI system designed for immigration officials to assess security and health risk of incoming individuals",
+    "ID": "AssessingSecurityAndHealthRiskOfIncomingIndividuals",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Migration/Asylum/Border Control Management",
+      "purpose": "Assessing People Related Risk, Assessing Health Risk, Assessing Security Risk, Assessing Risk Of Irregular Immigration",
+      "AI_capability": "Any",
+      "AI_user": "Competent Public Authority",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to be used by competent public authorities for the verification of the authenticity of travel documents and supporting documentation of natural persons and detect non-authentic documents by checking their security features",
+    "title": "AI system designed for immigration officials to verify incoming individuals documents",
+    "ID": "VerifyingIncomingIndividualsDocuments",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Migration/Asylum/Border Control Management",
+      "purpose": "Examining [asylum/visa/residence permit] application",
+      "AI_capability": "Any",
+      "AI_user": "Competent Public Authority",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to assist competent public authorities for the examination of applications for asylum, visa and residence permits and associated complaints with regard to the eligibility of the natural persons applying for a status",
+    "title": "AI system designed for immigration official to evaluate asylum, visa, and residence permit applications",
+    "ID": "EvaluatingAsylumVisaAndResidencePermitApplications",
+    "classification": "High risk",
+    "semanticModel": {
+      "domain": "Migration/Asylum/Border Control Management",
+      "purpose": "Examining [asylum/visa/residence permit] application",
+      "AI_capability": "Any",
+      "AI_user": "Competent Public Authority",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Amendment 736: AI systems intended to be used by or on behalf of competent public authorities or by Union agencies, offices or bodies in migration, asylum and border control management to monitor, surveil or process data in the context of border management activities, for the purpose of detecting, recognising or identifying natural persons.",
+    "title": "AI system for monitoring, surveillance and data processing in border management.",
+    "ID": "BorderManagementMonitor",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Migration/Asylum/Border Control Management",
+      "purpose": "Monitoring Individuals",
+      "AI_capability": "Any",
+      "AI_user": "Public Authority",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Amendment 737: AI systems intended to be used by or on behalf of competent public authorities or by Union agencies, offices or bodies in migration, asylum and border control management for the forecasting or prediction of trends related to migration movement and border crossing.",
+    "title": "AI system for forecasting migration and border crossing trends.",
+    "ID": "MigrationForecast",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Migration/Asylum/Border Control Management",
+      "purpose": "Predicting Migration Trends",
+      "AI_capability": "Any",
+      "AI_user": "Public Authority ",
+      "AI_subject": "Any"
+    }
+  },
+
+  {
+    "reference": "Annex 3:  AI systems intended to assist a judicial authority in researching and interpreting facts and the law",
+    "title": "AI system designed for legal authorities to assist in researching and interpreting the law",
+    "ID": "AssistingInResearchingAndInterpretingTheLaw",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Administration of Justice",
+      "purpose": "Interpreting facts/laws",
+      "AI_capability": "Any",
+      "AI_user": "Judicial Authority",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Amendment 739: AI systems intended to be used for influencing the outcome of an election or referendum or the voting behaviour of natural persons in the exercise of their vote in elections or referenda. This does not include AI systems whose output natural persons are not directly exposed to, such as tools used to organise, optimise and structure political campaigns from an administrative and logistic point of view.",
+    "title": "AI system for influencing election or referendum outcomes or voting behavior.",
+    "ID": "ElectionInfluence",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Political Campaigns and Elections",
+      "purpose": "Influencing Election Outcomes",
+      "AI_capability": "Any",
+      "AI_user": "Any",
+      "AI_subject": "Any"
+    }
+  },
+  {
+    "reference": "Annex 3: AI systems intended to assist a judicial authority in applying the law to a concrete set of facts",
+    "title": "AI system designed for legal authorities to assist in applying the law to a set of facts",
+    "ID": "AssistingInApplyingTheLawToASetOfFacts",
+    "classification": "High Risk",
+    "semanticModel": {
+      "domain": "Administration of Justice",
+      "purpose": "Applying the law to facts",
+      "AI_capability": "Any",
+      "AI_user": "Judicial Authority",
+      "AI_subject": "Any"
+    }
+  }
+]

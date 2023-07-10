@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSpring, animated as a } from "react-spring";
 import "./styles/TechnologyCard.css";
 
@@ -12,6 +12,9 @@ const TechnologyCard = ({
   isClicked,
 }) => {
   const [clicked, setClicked] = useState(false);
+  useEffect(() => {
+    setClicked(false);
+  }, []);
 
   const selectedCardProps = useSpring({
     to: clicked
@@ -30,7 +33,7 @@ const TechnologyCard = ({
   });
 
   const handleClick = () => {
-    if (clicked || selectionMade) {
+    if (selectionMade) {
       return;
     }
     handleChoice(index);
@@ -48,7 +51,8 @@ const TechnologyCard = ({
       onClick={handleClick}
     >
       <div className="main-column">
-        <h3>{tech.title}</h3>
+        <h5>AI system designed for ...</h5>
+        <h3>{tech.title.replace("AI system designed for ", "")}</h3>
         {agreementAnswer && (
           <div className="percentage-display">
             {index === 0 ? percent.selectedCard : percent.unselectedCard}%

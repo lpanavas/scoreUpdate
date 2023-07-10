@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useSpring, animated as a } from "react-spring";
 import "./styles/ScoreBar.css";
 
-const ScoreBar = ({ score }) => {
+const ScoreBar = ({ score, currentPairIndex }) => {
   const [previousScore, setPreviousScore] = useState(score);
+  const [maxScore, setMaxScore] = useState(currentPairIndex * 10);
   const [scoreChange, setScoreChange] = useState(0);
   const [displayChange, setDisplayChange] = useState(false);
 
@@ -11,9 +12,11 @@ const ScoreBar = ({ score }) => {
     setScoreChange(score - previousScore);
     setPreviousScore(score);
     setDisplayChange(true);
-    const timeout = setTimeout(() => setDisplayChange(false), 2000); // hide score change after 1 second
+    const timeout = setTimeout(() => setDisplayChange(false), 2000);
+    const maxScore = (currentPairIndex + 1) * 10;
+    setMaxScore(maxScore);
     return () => clearTimeout(timeout);
-  }, [score]);
+  }, [score, currentPairIndex]);
 
   const barProps = useSpring({
     backgroundColor: displayChange ? "#26925F" : "#7758FF",
@@ -28,7 +31,9 @@ const ScoreBar = ({ score }) => {
 
   return (
     <a.div style={barProps} className="score-bar">
-      <span>Score: {score}</span>
+      <span>
+        Score: {score} / {maxScore}
+      </span>
       {displayChange && (
         <a.div style={scoreChangeProps} className="score-change">
           {scoreChange > 0 ? "+" : ""}

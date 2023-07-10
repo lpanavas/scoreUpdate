@@ -6,7 +6,12 @@ import authorityHigh from "../images/AuthorityHigh/b15_p460_8.jpg";
 import fairLow from "../images/FairLow/b10_p133_8.jpg";
 import fairHigh from "../images/FairHigh/b11_p172_9.jpg";
 
-const MoralDescriptors = ({ moralDescriptors, handleNextCards }) => {
+const MoralDescriptors = ({
+  moralDescriptors,
+  handleNextCards,
+  setMoralChoices,
+  selectedCard,
+}) => {
   const [currentDescriptorIndex, setCurrentDescriptorIndex] = useState(0);
   const [selectedImages, setSelectedImages] = useState({
     high: null,
@@ -14,12 +19,12 @@ const MoralDescriptors = ({ moralDescriptors, handleNextCards }) => {
   });
 
   const handleImageSelection = (selectedImage) => {
-    if (selectedImage === "high") {
+    if (selectedImage === "positive") {
       setSelectedImages({
         ...selectedImages,
         high: moralDescriptors[currentDescriptorIndex],
       });
-    } else if (selectedImage === "low") {
+    } else if (selectedImage === "negative") {
       setSelectedImages({
         ...selectedImages,
         low: moralDescriptors[currentDescriptorIndex],
@@ -72,6 +77,13 @@ const MoralDescriptors = ({ moralDescriptors, handleNextCards }) => {
   const handleButtonClick = (selectedImage) => {
     setButtonProps({ scale: 1.1 });
     handleImageSelection(selectedImage);
+    setMoralChoices((prevChoices) => ({
+      ...prevChoices,
+      [selectedCard.ID]: {
+        ...(prevChoices[selectedCard.ID] || {}),
+        [currentDescriptor]: selectedImage,
+      },
+    }));
 
     // Reset the button scale after a short period of time
     setTimeout(() => setButtonProps({ scale: 1 }), 150);
