@@ -147,34 +147,3 @@
     }
 }
 
-@media only screen and (max-width: 1024px) {
-  .technology-card h5 {
-      font-size: 1.5rem;
-  }
-
-  .technology-card h3 {
-      font-size: 2rem;
-  }
-}
-
-/* For small screens */
-@media only screen and (max-width: 768px) {
-  .technology-card h5 {
-      font-size: 1rem;
-  }
-
-  .technology-card h3 {
-      font-size: 1.5rem;
-  }
-}
-
-/* For extra small screens (phones) */
-@media only screen and (max-width: 480px) {
-  .technology-card h5 {
-      font-size: 0.8rem;
-  }
-
-  .technology-card h3 {
-      font-size: 1rem;
-  }
-}
