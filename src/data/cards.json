@@ -408,7 +408,7 @@
   },
   {
     "reference": "Amendment 739: AI systems intended to be used for influencing the outcome of an election or referendum or the voting behaviour of natural persons in the exercise of their vote in elections or referenda. This does not include AI systems whose output natural persons are not directly exposed to, such as tools used to organise, optimise and structure political campaigns from an administrative and logistic point of view.",
-    "title": "AI system for influencing election or referendum outcomes or voting behavior.",
+    "title": "AI system for influencing election or voting behavior.",
     "ID": "ElectionInfluence",
     "classification": "High Risk",
     "semanticModel": {

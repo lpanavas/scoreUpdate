@@ -1,10 +1,24 @@
 import React, { useState } from "react";
 import { useSpring, useTransition, animated as a } from "react-spring";
 import "./styles/MoralDescriptors.css";
-import authorityLow from "../images/AuthorityLow/b15_p345_14.jpg";
-import authorityHigh from "../images/AuthorityHigh/b15_p460_8.jpg";
-import fairLow from "../images/FairLow/b10_p133_8.jpg";
-import fairHigh from "../images/FairHigh/b11_p172_9.jpg";
+import authorityPositive from "../images/AuthorityPositive.jpg";
+import authorityNegative from "../images/AuthorityNegative.jpg";
+import fairPositive from "../images/FairPositive.jpg";
+import fairNegative from "../images/FairNegative.jpg";
+import loyaltyPositive from "../images/LoyaltyPositive.jpg";
+import loyaltyNegative from "../images/LoyaltyNegative.jpg";
+import harmNegative from "../images/HarmNegative.jpg";
+import harmPositive from "../images/HarmPositive.jpg";
+import purityPositive from "../images/PurityPositive.jpg";
+import purityNegative from "../images/PurityNegative.jpg";
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // destructuring assignment to swap values
+  }
+  return array;
+};
 
 const MoralDescriptors = ({
   moralDescriptors,
@@ -14,20 +28,20 @@ const MoralDescriptors = ({
 }) => {
   const [currentDescriptorIndex, setCurrentDescriptorIndex] = useState(0);
   const [selectedImages, setSelectedImages] = useState({
-    high: null,
-    low: null,
+    positive: null,
+    negative: null,
   });
 
   const handleImageSelection = (selectedImage) => {
     if (selectedImage === "positive") {
       setSelectedImages({
         ...selectedImages,
-        high: moralDescriptors[currentDescriptorIndex],
+        positive: moralDescriptors[currentDescriptorIndex],
       });
     } else if (selectedImage === "negative") {
       setSelectedImages({
         ...selectedImages,
-        low: moralDescriptors[currentDescriptorIndex],
+        negative: moralDescriptors[currentDescriptorIndex],
       });
     }
 
@@ -37,23 +51,67 @@ const MoralDescriptors = ({
       setCurrentDescriptorIndex(currentDescriptorIndex + 1);
     }
   };
-
   const getImageSource = (descriptor) => {
     switch (descriptor) {
       case "Authority":
         return {
-          high: authorityHigh,
-          low: authorityLow,
+          positive: {
+            source: authorityPositive,
+            description: "Respectful",
+          },
+          negative: {
+            source: authorityNegative,
+            description: "Disobedient",
+          },
         };
       case "Fair":
         return {
-          high: fairHigh,
-          low: fairLow,
+          positive: {
+            source: fairPositive,
+            description: "Fair",
+          },
+          negative: {
+            source: fairNegative,
+            description: "Unjust",
+          },
+        };
+      case "Loyalty":
+        return {
+          positive: {
+            source: loyaltyPositive,
+            description: "Loyal",
+          },
+          negative: {
+            source: loyaltyNegative,
+            description: "Traitor",
+          },
+        };
+      case "Harm":
+        return {
+          positive: {
+            source: harmPositive,
+            description: "Protective",
+          },
+          negative: {
+            source: harmNegative,
+            description: "Harmful",
+          },
+        };
+      case "Purity":
+        return {
+          positive: {
+            source: purityPositive,
+            description: "Decent",
+          },
+          negative: {
+            source: purityNegative,
+            description: "Indecent",
+          },
         };
       default:
         return {
-          high: "",
-          low: "",
+          positive: { source: "", description: "" },
+          negative: { source: "", description: "" },
         };
     }
   };
@@ -98,33 +156,35 @@ const MoralDescriptors = ({
             <div className="image-wrapper">
               <a.button
                 style={buttonProps}
-                onClick={() => handleButtonClick("high")}
+                onClick={() => handleButtonClick("positive")}
               >
                 <img
-                  src={imageSources.high}
-                  alt="High"
+                  src={imageSources.positive.source}
+                  alt="Positive"
                   className={
-                    selectedImages.high === moralDescriptors[item]
+                    selectedImages.positive === moralDescriptors[item]
                       ? "image-pop-up"
                       : ""
                   }
                 />
+                <p>{imageSources.positive.description}</p>
               </a.button>
             </div>
             <div className="image-wrapper">
               <a.button
                 style={buttonProps}
-                onClick={() => handleButtonClick("low")}
+                onClick={() => handleButtonClick("negative")}
               >
                 <img
-                  src={imageSources.low}
-                  alt="Low"
+                  src={imageSources.negative.source}
+                  alt="Negative"
                   className={
-                    selectedImages.low === moralDescriptors[item]
+                    selectedImages.negative === moralDescriptors[item]
                       ? "image-pop-up"
                       : ""
                   }
                 />
+                <p>{imageSources.negative.description}</p>
               </a.button>
             </div>
           </>

@@ -1,5 +1,10 @@
 import React from "react";
 import robotLogo from "../images/robot-logo.png";
+import firstSlide from "../images/firstSlide.png";
+import secondSlide from "../images/secondSlide.png";
+import thirdSlide from "../images/thirdSlide.png";
+import fourthSlide from "../images/fourthSlide.PNG";
+
 import "../components/styles/LandingPage.css";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
@@ -8,17 +13,27 @@ function LandingPage({ onStartGame }) {
   const slides = [
     {
       title: "First item",
-      description: "The EU AI Act goes into effect very soon.",
+      description:
+        "Heard of AI? It's hard to miss. Join us in a game to discover your views on it!",
+      image: firstSlide,
     },
     {
       title: "Second item",
       description:
-        "All of the AI systems you see in the course of the game are directly related to this legislation.",
+        "Test your instincts! Can you predict what others think about each AI technology?",
+      image: secondSlide,
     },
     {
       title: "Third item",
       description:
-        "Help us better understand how you feel about AI and see how your others feel.",
+        "Think you know the laws? Let's see if you can match AI technologies with their EU AI Act risk categories.",
+      image: thirdSlide,
+    },
+    {
+      title: "Fourth item",
+      description:
+        "Done with a game? Review your answers, compare with others, and keep playing to explore more!",
+      image: fourthSlide,
     },
   ];
 
@@ -34,8 +49,9 @@ function LandingPage({ onStartGame }) {
           <Slider infinite={true}>
             {slides.map((slide, index) => (
               <div key={index}>
-                <h2>{slide.title}</h2>
-                <div>{slide.description}</div>
+                {/* <h2>{slide.title}</h2> */}
+                <div className="slideDescription">{slide.description}</div>
+                <img className="sliderImage" src={slide.image} alt="Slide" />
               </div>
             ))}
           </Slider>

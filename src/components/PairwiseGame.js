@@ -10,7 +10,7 @@ import Button from "./Button";
 import DemographicCollection from "./DemographicCollection";
 import "./styles/PairwiseGame.css";
 
-const moralDescriptors = ["Authority", "Fair"];
+const moralDescriptors = ["Authority", "Fair", "Harm", "Loyalty", "Purity"];
 
 const PairwiseGame = ({
   technologies,
@@ -113,7 +113,6 @@ const PairwiseGame = ({
       });
 
       // Output the final JSON
-      console.log(skipDemographics);
       if (skipDemographics && currentPairIndex >= shuffledTechnologies.length) {
         const finalData = {
           UserID: userID, // this should be fetched dynamically
@@ -168,22 +167,58 @@ const PairwiseGame = ({
     setAgreementAnswer(null);
   };
 
-  const renderTechnologyCard = (index) => {
-    const tech = shuffledTechnologies[currentPairIndex][index];
-    const percent = {
-      selectedCard: selectedPercent,
-      unselectedCard: unselectedPercent,
-    };
+  const renderTechnologyCard = () => {
+    const tech1 = shuffledTechnologies[currentPairIndex][0];
+    const tech2 = shuffledTechnologies[currentPairIndex][1];
+    // Define default percents
+    let selectedPercent = 50;
+    let unselectedPercent = 50;
+
+    // The current pair from shuffledTechnologies
+    let selectedPercent1 = 50;
+    let unselectedPercent1 = 50;
+
+    let selectedPercent2 = 50;
+    let unselectedPercent2 = 50;
+
+    const currentPair = shuffledTechnologies[currentPairIndex].map(
+      (tech) => tech.ID
+    );
+
+    for (let i = 0; i < pairwiseData.data.length; i++) {
+      const pair = pairwiseData.data[i].pair;
+
+      if (pair.sort().join(",") === currentPair.sort().join(",")) {
+        const percentages = pairwiseData.data[i].percentages;
+
+        selectedPercent1 = percentages[tech1.ID];
+        unselectedPercent1 = 100 - selectedPercent1;
+
+        selectedPercent2 = percentages[tech2.ID];
+        unselectedPercent2 = 100 - selectedPercent2;
+
+        break;
+      }
+    }
+
     return (
       <TechnologyCard
-        key={tech.title}
-        tech={tech}
+        key={`${tech1.title}-${tech2.title}`}
+        tech1={tech1}
+        tech2={tech2}
         handleChoice={handleChoice}
-        index={index}
-        percent={percent}
+        percent1={{
+          selectedCard: selectedPercent1,
+          unselectedCard: unselectedPercent1,
+        }}
+        percent2={{
+          selectedCard: selectedPercent2,
+          unselectedCard: unselectedPercent2,
+        }}
         selectionMade={selectionMade}
         agreementAnswer={agreementAnswer}
-        isClicked={index === selectedIndex}
+        isClicked1={0 === selectedIndex}
+        isClicked2={1 === selectedIndex}
       />
     );
   };
@@ -197,12 +232,54 @@ const PairwiseGame = ({
   };
 
   const handleAgreementAnswer = (answer) => {
-    const percentCard = selectedCard;
-    const unpercentCard = unselectedCard;
-    setAgreementResult("Correct");
-    setScore((prevScore) => prevScore + 10);
-    setSelectedPercent(49);
-    setUnselectedPercent(51);
+    let AgreementResult;
+    let selectedPercent, unselectedPercent;
+
+    // search the pairwiseData
+    for (let i = 0; i < pairwiseData.data.length; i++) {
+      let pair = pairwiseData.data[i].pair;
+
+      // if we found the right pair
+      if (pair.includes(selectedCard.ID) && pair.includes(unselectedCard.ID)) {
+        let percentages = pairwiseData.data[i].percentages;
+
+        if (selectedCard.ID === "unsure" || answer === "unsure") {
+          AgreementResult = null;
+        } else if (
+          percentages[selectedCard.ID] === 50 ||
+          (percentages[selectedCard.ID] > 50 && answer === "yes") ||
+          (percentages[selectedCard.ID] < 50 && answer === "no")
+        ) {
+          AgreementResult = "correct";
+        } else {
+          AgreementResult = "incorrect";
+        }
+
+        // get the percentages from the data
+        selectedPercent = percentages[selectedCard.ID];
+        unselectedPercent = percentages[unselectedCard.ID];
+
+        break;
+      }
+    }
+
+    // If AgreementResult is undefined, then there was no match found
+    if (AgreementResult === undefined) {
+      throw new Error("No match found for selected card in pairwise data.");
+    }
+
+    if (AgreementResult === "correct") {
+      setAgreementResult("Correct");
+      setScore((prevScore) => prevScore + 10);
+    } else {
+      setAgreementResult("Incorrect");
+      // setScore remains unchanged
+    }
+
+    // set the percentages to the actual percentages from the data
+    setSelectedPercent(selectedPercent);
+    setUnselectedPercent(unselectedPercent);
+
     setRiskAnswer("show");
 
     setCardMatchups([
@@ -215,73 +292,6 @@ const PairwiseGame = ({
       },
     ]);
 
-    // const foundComparison = Comparisons.comparisons.find(
-    //   (comp) =>
-    //     comp.title1 === percentCard.title && comp.title2 === unpercentCard.title
-    // );
-
-    // setScoreIndex((scoreIndex) => scoreIndex + 1);
-
-    // // Update the score based on the selectedPercent
-    // if (foundComparison && answer === "yes") {
-    //   setAgreementResult("Correct");
-    //   setScore((prevScore) => prevScore + 10);
-    //   setSelectedPercent(foundComparison.percent1);
-    //   setUnselectedPercent(foundComparison.percent2);
-    // }
-    // if (foundComparison && answer === "no") {
-    //   setAgreementResult("Incorrect");
-    //   setScore((prevScore) => prevScore);
-    //   setSelectedPercent(foundComparison.percent1);
-    //   setUnselectedPercent(foundComparison.percent2);
-    // }
-    // if (foundComparison && answer === "unsure") {
-    //   setAgreementResult(null);
-
-    //   setScore((prevScore) => prevScore);
-    //   setSelectedPercent(foundComparison.percent1);
-    //   setUnselectedPercent(foundComparison.percent2);
-    // }
-
-    // if (!foundComparison && answer === "yes") {
-    //   setAgreementResult("Incorrect");
-
-    //   setScore((prevScore) => prevScore);
-    //   const wrongOrder = Comparisons.comparisons.find(
-    //     (comp) =>
-    //       comp.title1 === unpercentCard.title &&
-    //       comp.title2 === percentCard.title
-    //   );
-    //   setSelectedPercent(wrongOrder.percent2);
-    //   setUnselectedPercent(wrongOrder.percent1);
-    //   console.log(wrongOrder);
-    // }
-
-    // if (!foundComparison && answer === "no") {
-    //   setAgreementResult("Correct");
-
-    //   setScore((prevScore) => prevScore + 10);
-    //   const wrongOrder = Comparisons.comparisons.find(
-    //     (comp) =>
-    //       comp.title1 === unpercentCard.title &&
-    //       comp.title2 === percentCard.title
-    //   );
-    //   setSelectedPercent(wrongOrder.percent2);
-    //   setUnselectedPercent(wrongOrder.percent1);
-    // }
-
-    // if (!foundComparison && answer === "unsure") {
-    //   setAgreementResult(null);
-    //   setScore((prevScore) => prevScore);
-    //   const wrongOrder = Comparisons.comparisons.find(
-    //     (comp) =>
-    //       comp.title1 === unpercentCard.title &&
-    //       comp.title2 === percentCard.title
-    //   );
-    //   setSelectedPercent(wrongOrder.percent2);
-    //   setUnselectedPercent(wrongOrder.percent1);
-    // }
-
     setShowAgreementResult(true); // Initially set showAgreementResult to true
     setTimeout(() => {
       setShowAgreementResult(false); // After a second, set showAgreementResult back to false
@@ -290,6 +300,7 @@ const PairwiseGame = ({
     setShowDescriptorImages(true);
     setAgreementAnswer(answer);
   };
+
   const handleNextCards = () => {
     let updatedRankings = { ...rankings };
     // Check if we should move onto the next stage or finish this round
@@ -311,7 +322,6 @@ const PairwiseGame = ({
     setSelectedCard(null);
     setUnselectedCard(null);
     setCurrentPairIndex(currentPairIndex + 1);
-    setDescriptorStage("firstDescriptors"); // Reset the descriptor stage
     setSelectionMade(false);
     setSelectedIndex(null);
     setAgreementAnswer(null);
@@ -372,11 +382,7 @@ const PairwiseGame = ({
           <div className="bottomHalf">
             <div className="technology-pair">
               {currentPairIndex < shuffledTechnologies.length && (
-                <>
-                  {renderTechnologyCard(0)}
-
-                  {renderTechnologyCard(1)}
-                </>
+                <>{renderTechnologyCard()}</>
               )}
               {selectedCard ? null : (
                 <div className="descriptors">

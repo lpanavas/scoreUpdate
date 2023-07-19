@@ -9,7 +9,12 @@ const ScoreBar = ({ score, currentPairIndex }) => {
   const [displayChange, setDisplayChange] = useState(false);
 
   useEffect(() => {
-    setScoreChange(score - previousScore);
+    const difference = score - previousScore;
+    if (difference === 0) {
+      return; // Don't do anything if score hasn't changed
+    }
+
+    setScoreChange(difference);
     setPreviousScore(score);
     setDisplayChange(true);
     const timeout = setTimeout(() => setDisplayChange(false), 2000);
@@ -31,9 +36,7 @@ const ScoreBar = ({ score, currentPairIndex }) => {
 
   return (
     <a.div style={barProps} className="score-bar">
-      <span>
-        Score: {score} / {maxScore}
-      </span>
+      <span>Score: {score} / 50</span>
       {displayChange && (
         <a.div style={scoreChangeProps} className="score-change">
           {scoreChange > 0 ? "+" : ""}

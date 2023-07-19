@@ -34,7 +34,8 @@ h6,p {
 
 .story-page,
 .pairwise-game,
-.landing-page {
+.landing-page
+ {
     width: 80%;
     height: 100vh;
     background-color: #fff;
@@ -51,18 +52,24 @@ h6,p {
     box-sizing: border-box;
 }
 
+
 .landing-page{
     margin: 0 auto;
 }
 
+.results-page{
+    margin: 0 auto;
+}
+
 h1 {
-    font-size: 1.8rem;
+    font-size: calc(1rem + 1vw);
+
     font-weight: bold;
     letter-spacing: 0.05em;
 }
 
 h2 {
-    font-size: 1.4rem;
+    font-size: calc(1rem + 1vw);
     font-weight: bold;
     letter-spacing: 0.03em;
 }

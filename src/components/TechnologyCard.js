@@ -3,82 +3,114 @@ import { useSpring, animated as a } from "react-spring";
 import "./styles/TechnologyCard.css";
 
 const TechnologyCard = ({
-  tech,
+  tech1,
+  tech2,
   handleChoice,
-  index,
-  percent,
+  percent1,
+  percent2,
   selectionMade,
   agreementAnswer,
-  isClicked,
+  isClicked1,
+  isClicked2,
 }) => {
-  const [clicked, setClicked] = useState(false);
-  useEffect(() => {
-    setClicked(false);
-  }, []);
+  const [clicked1, setClicked1] = useState(false);
+  const [clicked2, setClicked2] = useState(false);
 
-  const selectedCardProps = useSpring({
-    to: clicked
+  useEffect(() => {
+    setClicked1(isClicked1);
+    setClicked2(isClicked2);
+  }, [isClicked1, isClicked2]);
+
+  const scaleAndShadowProps1 = useSpring({
+    to: clicked1
       ? { scale: 1.04, boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)" }
       : {},
     config: { tension: 210, friction: 20 },
   });
 
-  const props = useSpring({
-    from: { opacity: 0, transform: "scale(0)" },
-    to: {
-      opacity: selectionMade && !clicked ? 0.3 : 1,
-      transform: "scale(1)",
-    },
+  const opacityProps1 = useSpring({
+    to: clicked2 ? { opacity: 0.5 } : {},
     config: { tension: 210, friction: 20 },
   });
 
-  const handleClick = () => {
+  const scaleAndShadowProps2 = useSpring({
+    to: clicked2
+      ? { scale: 1.04, boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)" }
+      : {},
+    config: { tension: 210, friction: 20 },
+  });
+
+  const opacityProps2 = useSpring({
+    to: clicked1 ? { opacity: 0.5 } : {},
+    config: { tension: 210, friction: 20 },
+  });
+
+  const handleClick1 = () => {
     if (selectionMade) {
       return;
     }
-    handleChoice(index);
-    setClicked(true);
+    handleChoice(0);
+    setClicked1(true);
   };
 
-  const cardClass = clicked
-    ? "technology-card clicked"
-    : "technology-card unselected";
+  const handleClick2 = () => {
+    if (selectionMade) {
+      return;
+    }
+    handleChoice(1);
+    setClicked2(true);
+  };
 
   return (
-    <a.div
-      style={clicked && selectionMade ? selectedCardProps : props}
-      className={cardClass}
-      onClick={handleClick}
-    >
-      <div className="main-column">
-        <h5>AI system designed for ...</h5>
-        <h3>{tech.title.replace("AI system designed for ", "")}</h3>
-        {agreementAnswer && (
-          <div className="percentage-display">
-            {index === 0 ? percent.selectedCard : percent.unselectedCard}%
+    <>
+      <a.div
+        style={{ ...scaleAndShadowProps1, ...opacityProps1 }}
+        className={
+          clicked1 ? "technology-card clicked" : "technology-card unselected"
+        }
+        onClick={handleClick1}
+      >
+        <div className="main-column">
+          <h5>AI system designed for ...</h5>
+          <h3>{tech1.title.replace("AI system designed for ", "")}</h3>
+          {agreementAnswer && (
+            <div className="percentage-display">{percent1.selectedCard}%</div>
+          )}
+          <div className="percentage-div">
+            {agreementAnswer && (
+              <div
+                className="bar selected"
+                style={{ height: `${percent1.selectedCard}%` }}
+              ></div>
+            )}
           </div>
-        )}
-        <div className="percentage-div">
-          {agreementAnswer && index === 0 && (
-            <div
-              className="bar selected"
-              style={{ height: `${percent.selectedCard}%` }}
-            ></div>
-          )}
-          {agreementAnswer && index === 1 && (
-            <div
-              className="bar unselected"
-              style={{ height: `${percent.unselectedCard}%` }}
-            ></div>
-          )}
-          {/* {clicked && (
-            <div className="checked-div">
-              <i className="fas fa-check"></i>
-            </div>
-          )} */}
         </div>
-      </div>
-    </a.div>
+      </a.div>
+
+      <a.div
+        style={{ ...scaleAndShadowProps2, ...opacityProps2 }}
+        className={
+          clicked2 ? "technology-card clicked" : "technology-card unselected"
+        }
+        onClick={handleClick2}
+      >
+        <div className="main-column">
+          <h5>AI system designed for ...</h5>
+          <h3>{tech2.title.replace("AI system designed for ", "")}</h3>
+          {agreementAnswer && (
+            <div className="percentage-display">{percent2.selectedCard}%</div>
+          )}
+          <div className="percentage-div">
+            {agreementAnswer && (
+              <div
+                className="bar selected"
+                style={{ height: `${percent2.selectedCard}%` }}
+              ></div>
+            )}
+          </div>
+        </div>
+      </a.div>
+    </>
   );
 };
 

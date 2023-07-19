@@ -19,3 +19,8 @@
     color: #00ff00; /* Or any other color you prefer */
     font-size: 0.8em; /* Adjust as needed */
 }
+
+span{
+    font-size: calc(.5rem + 1vw);
+
+}

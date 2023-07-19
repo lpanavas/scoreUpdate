@@ -15,7 +15,6 @@ const maxHighScore = Math.max(...Object.values(data).map((d) => d.high_score));
 
 function ScoreLine({ userScore, stage }) {
   const ref = useRef();
-  console.log(userScore, stage);
   useEffect(() => {
     const svg = d3.select(ref.current);
     const svgWidth = +svg.node().getBoundingClientRect().width;

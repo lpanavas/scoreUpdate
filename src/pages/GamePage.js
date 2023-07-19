@@ -38,7 +38,7 @@ function GamePage({
   if (loading) {
     return <div className="game-page">Loading...</div>;
   }
-
+  console.log("pairise data", pairwiseData);
   return (
     <div className="game-page">
       <div className="game-content">

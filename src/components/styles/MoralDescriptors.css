@@ -1,5 +1,16 @@
 
 
+.moral-descriptors{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    width: 90%;
+    padding: 1em;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
 .moral-descriptors h3 {
     margin: 1em 0em;
 }
@@ -43,6 +54,7 @@
 
 .unsure-button {
     border-radius: 2em;
+    margin-top: 1em;
     border: none;
     padding: 0.5em 1em;
     background-color: rgba(119, 88, 255, 0.12);

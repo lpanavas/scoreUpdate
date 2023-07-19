@@ -6,7 +6,17 @@
     align-items: center;
     justify-content: center;
   }
+
+  .demographicQuestions{
+    width: 70%;
+  }
   
+  .demographicQuestions h2{
+    font-size: calc(1rem + 1vw);
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 1em;
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -16,12 +26,17 @@
   }
   
   select {
-    width: 200px;
+    width: 40vw;
     padding: 0.5em;
     margin-bottom: 1em;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+
+ 
+    font-family: "Montserrat";
+    border-radius: 1em;
+    margin: .2em 4vw;
+    font-size: calc(.6rem + .7vw);
   }
+ 
   
   button[type="submit"] {
     padding: 0.5em 1em;

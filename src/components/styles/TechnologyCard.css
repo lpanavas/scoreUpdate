@@ -25,13 +25,17 @@
     
 }
 
+
 .percentage-display {
     position: absolute;
-    top: -2.5em; /* adjust as needed */
+    top: -2em; /* adjust as needed */
     align-content: center;
     justify-content: center ;
     margin: .5em;
     left: 33%;
+    font-family: "Montserrat", monospace;
+    font-weight: bold;
+    font-size: calc(.8rem + .9vw);
     /* Other styles as per your needs */
   }
 

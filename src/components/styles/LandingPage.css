@@ -57,7 +57,8 @@
     justify-content: flex-start;
   }
   .landing-page h1 {
-    font-size: 2rem;
+    font-size: calc(1.5rem + .7vw);
+
     /* font-weight: bold; */
     font-style: italic;
     letter-spacing: 0.05em;
@@ -65,16 +66,12 @@
 
  
   .landing-page h2 {
-    font-size: 1rem;
+    font-size: calc(1rem + .8vw);
     /* font-weight: bold; */
     color: black;
     letter-spacing: 0.05em;
   }
-  
-  .landing-page p {
-    font-size: 2rem;
-    letter-spacing: 0.01em;
-  }
+
   .logo-image {
     width: 20em; /* Adjust the width to your desired size */
     height: auto; /* Automatically adjust the height while maintaining the aspect ratio */
@@ -97,4 +94,39 @@
   
   .landing-page-button:hover {
     background-color: #54935C;
+  }
+
+
+  .nextButton{
+    opacity: .2;
+    margin-top: 3em;
+  }
+
+  .previousButton{
+    opacity: .2;
+    margin-top: 3em;
+
+  }
+  .sliderImage{
+    width: 70%;
+    height: auto;
+  }
+
+  @import 'react-animated-slider/build/horizontal.css';
+
+  .slider{
+    height: 100% !important;
+  }
+
+  .sliderImage {
+    margin-top: 1em;
+    height: 70%;
+    width: auto; /* to maintain the aspect ratio */
+  }
+  .slideDescription{
+    margin: 0 1vw;
+    font-size: calc(1.2rem + .8vw);
+    letter-spacing: 0.01em;
+    font-family: "Montserrat", monospace;
+
   }

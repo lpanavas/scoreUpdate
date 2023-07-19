@@ -116,7 +116,7 @@ exports.calculateRankings = async (req, res) => {
       }
     }
   }
-
+  console.log(rankings);
   res.json({ rankings, ratings });
 };
 
@@ -145,42 +145,47 @@ exports.calculatePairwiseData = async (req, res) => {
       { $unwind: "$outputData.CardMatchups" },
       {
         $match: {
-          "outputData.CardMatchups.Card1": { $in: cardIds },
-          "outputData.CardMatchups.Card2": { $in: cardIds },
+          $or: [
+            { "outputData.CardMatchups.Card1": { $in: cardIds } },
+            { "outputData.CardMatchups.Card2": { $in: cardIds } },
+          ],
         },
       },
     ]);
 
-    // Initialize the response object
-    const response = pairs.reduce((obj, pair) => {
-      obj[pair.join("-")] = { pair, counts: { [pair[0]]: 0, [pair[1]]: 0 } };
+    // Initialize the card wins count object
+    const cardWins = cardIds.reduce((obj, id) => {
+      obj[id] = 0;
       return obj;
     }, {});
 
     // Update counts based on past user responses
     allGameData.forEach((game) => {
       const matchup = game.outputData.CardMatchups;
-      const matchKey = [matchup.Card1, matchup.Card2].sort().join("-");
-
-      if (response[matchKey]) {
-        response[matchKey].counts[matchup.Answer]++;
-        console.log(response[matchKey]);
+      if (cardWins.hasOwnProperty(matchup.Answer)) {
+        cardWins[matchup.Answer]++;
       }
     });
 
-    // Calculate percentages
-    Object.values(response).forEach((item) => {
-      const total = item.counts[item.pair[0]] + item.counts[item.pair[1]];
-      item.percentages =
-        total === 0
-          ? { [item.pair[0]]: 50, [item.pair[1]]: 50 }
-          : {
-              [item.pair[0]]: (item.counts[item.pair[0]] / total) * 100,
-              [item.pair[1]]: (item.counts[item.pair[1]] / total) * 100,
-            };
+    // Initialize the response object
+    const response = pairs.reduce((obj, pair) => {
+      const totalWins = cardWins[pair[0]] + cardWins[pair[1]];
+      obj[pair.join("-")] = {
+        pair,
+        percentages: {
+          [pair[0]]:
+            totalWins === 0
+              ? 50
+              : Math.round((cardWins[pair[0]] / totalWins) * 100),
+          [pair[1]]:
+            totalWins === 0
+              ? 50
+              : Math.round((cardWins[pair[1]] / totalWins) * 100),
+        },
+      };
+      return obj;
+    }, {});
 
-      delete item.counts;
-    });
     response.data = Object.values(response);
 
     res.json(response);
