@@ -5,7 +5,7 @@ exports.addGameData = (req, res) => {
   const outputData = req.body.outputData;
 
   const newData = new GameData({ userID, outputData });
-
+  console.log(newData);
   newData
     .save()
     .then(() => res.json("Data added!"))
@@ -116,7 +116,6 @@ exports.calculateRankings = async (req, res) => {
       }
     }
   }
-  console.log(rankings);
   res.json({ rankings, ratings });
 };
 

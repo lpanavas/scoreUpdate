@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/scoreUpdate/static/css/main.ec8ba19e.css",
+    "main.js": "/scoreUpdate/static/js/main.d8503a35.js",
+    "static/js/787.28cb0dcd.chunk.js": "/scoreUpdate/static/js/787.28cb0dcd.chunk.js",
+    "static/media/fa-solid-900.ttf": "/scoreUpdate/static/media/fa-solid-900.4a2cd718d7031b732e76.ttf",
+    "static/media/fa-brands-400.ttf": "/scoreUpdate/static/media/fa-brands-400.150de8eaa454d669c405.ttf",
+    "static/media/fa-solid-900.woff2": "/scoreUpdate/static/media/fa-solid-900.bb975c966c37455a1bc3.woff2",
+    "static/media/firstSlide.png": "/scoreUpdate/static/media/firstSlide.f1e1ffc76f4998e703c2.png",
+    "static/media/robot-logo.png": "/scoreUpdate/static/media/robot-logo.bc30243a1bd07d361c86.png",
+    "static/media/PurityNegative.jpg": "/scoreUpdate/static/media/PurityNegative.cf6101c7607d0ed56fb5.jpg",
+    "static/media/fa-brands-400.woff2": "/scoreUpdate/static/media/fa-brands-400.e033a13ee751afc1860c.woff2",
+    "static/media/PurityPositive.jpg": "/scoreUpdate/static/media/PurityPositive.9ed16d65f808a82d8396.jpg",
+    "static/media/FairNegative.jpg": "/scoreUpdate/static/media/FairNegative.70fdd442173d3a22abb2.jpg",
+    "static/media/LoyaltyNegative.jpg": "/scoreUpdate/static/media/LoyaltyNegative.19a632b9b8b32c1f417e.jpg",
+    "static/media/AuthorityNegative.jpg": "/scoreUpdate/static/media/AuthorityNegative.16e567496a49bfe5f3fd.jpg",
+    "static/media/secondSlide.png": "/scoreUpdate/static/media/secondSlide.b24f9b7d8beb3e4d5a7c.png",
+    "static/media/fa-regular-400.ttf": "/scoreUpdate/static/media/fa-regular-400.d87474231f4192884802.ttf",
+    "static/media/fourthSlide.PNG": "/scoreUpdate/static/media/fourthSlide.3dd0ea18081ef003a314.PNG",
+    "static/media/LoyaltyPositive.jpg": "/scoreUpdate/static/media/LoyaltyPositive.b888eed6346fb28771d8.jpg",
+    "static/media/FairPositive.jpg": "/scoreUpdate/static/media/FairPositive.bfea5cfa944085bd85b5.jpg",
+    "static/media/AuthorityPositive.jpg": "/scoreUpdate/static/media/AuthorityPositive.0ca3eeb4e04f717d1d53.jpg",
+    "static/media/HarmNegative.jpg": "/scoreUpdate/static/media/HarmNegative.54b35cfa6216bfa52754.jpg",
+    "static/media/HarmPositive.jpg": "/scoreUpdate/static/media/HarmPositive.e4767fa7146d3fd24334.jpg",
+    "static/media/thirdSlide.png": "/scoreUpdate/static/media/thirdSlide.fb0fda962cf1838b9db4.png",
+    "static/media/fa-regular-400.woff2": "/scoreUpdate/static/media/fa-regular-400.3223dc79c1adee56370b.woff2",
+    "static/media/fa-v4compatibility.ttf": "/scoreUpdate/static/media/fa-v4compatibility.0e3a648be390bd8cb094.ttf",
+    "static/media/fa-v4compatibility.woff2": "/scoreUpdate/static/media/fa-v4compatibility.68577e40f3e70067b5da.woff2",
+    "index.html": "/scoreUpdate/index.html",
+    "main.ec8ba19e.css.map": "/scoreUpdate/static/css/main.ec8ba19e.css.map",
+    "main.d8503a35.js.map": "/scoreUpdate/static/js/main.d8503a35.js.map",
+    "787.28cb0dcd.chunk.js.map": "/scoreUpdate/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ec8ba19e.css",
+    "static/js/main.d8503a35.js"
+  ]
+}

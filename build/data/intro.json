@@ -1,0 +1,151 @@
+{
+  "start": "start_scene",
+  "scenes": {
+    "start_scene": {
+      "role": "you",
+      "scene": "*steps into the office on the first day, feeling a mix of excitement and nervousness*",
+      "choices": [
+        {
+          "option": "Nervously step into the office",
+          "public": 50
+        },
+        {
+          "option": "Excitedly step into the office",
+          "public": 50
+        }
+      ],
+      "next": "guide_greeting"
+    },
+    "guide_greeting": {
+      "role": "guide",
+      "scene": "Welcome to the AI assessment headquarters! I'm your trusty guide through the world of responsible AI. Ready for the ride?",
+      "choices": [
+        {
+          "option": "Absolutely!",
+          "public": 50
+        },
+        {
+          "option": "I'm feeling a bit overwhelmed.",
+          "public": 50
+        }
+      ],
+      "next": "guide_encouragement"
+    },
+    "guide_encouragement": {
+      "role": "guide",
+      "scene": "No worries, my friend! We're here to make sense of it all. Take a look around this bustling office dedicated to evaluating AI technologies...",
+      "choices": [
+        {
+          "option": "Nod and look around the office",
+          "public": 50
+        },
+        {
+          "option": "Smile and express enthusiasm",
+          "public": 50
+        }
+      ],
+      "next": "you_response1"
+    },
+    "you_response1": {
+      "role": "you",
+      "scene": "It's quite a responsibility, isn't it?",
+      "choices": [
+        {
+          "option": "Express concern",
+          "public": 50
+        },
+        {
+          "option": "Show determination",
+          "public": 50
+        }
+      ],
+      "next": "guide_explanation"
+    },
+    "guide_explanation": {
+      "role": "guide",
+      "scene": "It sure is! But fear not, we've got your back. This office is brimming with innovation, ideas, and even a touch of controversy...",
+      "choices": [
+        {
+          "option": "Express curiosity about the controversy",
+          "public": 50
+        },
+        {
+          "option": "Focus on the innovative ideas",
+          "public": 50
+        }
+      ],
+      "next": "you_response2"
+    },
+    "you_response2": {
+      "role": "you",
+      "scene": "That sounds like quite the challenge.",
+      "choices": [
+        {
+          "option": "Show readiness for the challenge",
+          "public": 50
+        },
+        {
+          "option": "Express doubts",
+          "public": 50
+        }
+      ],
+      "next": "guide_reassurance"
+    },
+    "guide_reassurance": {
+      "role": "guide",
+      "scene": "Indeed, it won't be a walk in the park. But remember, you're the ultimate decision maker here. Your assessments will determine the fate of these technologies...",
+      "choices": [
+        {
+          "option": "Accept the responsibility",
+          "public": 50
+        },
+        {
+          "option": "Express concern about the potential impact",
+          "public": 50
+        }
+      ],
+      "next": "you_response3"
+    },
+    "you_response3": {
+      "role": "you",
+      "scene": "I'll do my best to ensure responsible AI prevails.",
+      "choices": [
+        {
+          "option": "Show determination",
+          "public": 50
+        },
+        {
+          "option": "Express apprehension",
+          "public": 50
+        }
+      ],
+      "next": "guide_cheer"
+    },
+    "guide_cheer": {
+      "role": "guide",
+      "scene": "That's the spirit! So, strap yourself in, take a deep breath, and get ready to embark on this thrilling journey of AI assessment. The future awaits, and you're at the helm.",
+      "choices": [
+        {
+          "option": "I'm ready. Let's get started!",
+          "public": 50
+        },
+        {
+          "option": "Take a deep breath and nod",
+          "public": 50
+        }
+      ],
+      "next": "end_scene"
+    },
+    "end_scene": {
+      "role": "system",
+      "scene": "Moving to the next stage...",
+      "choices": [
+        {
+          "option": "Step into the next stage",
+          "public": 100
+        }
+      ],
+      "next": { "type": "game", "key": "pairwise_comparison" }
+    }
+  }
+}

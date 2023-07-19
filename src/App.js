@@ -6,6 +6,8 @@ import cards from "./data/cards.json";
 import "./components/styles/App.css";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL;
+console.log(API_URL);
 function generateID(length = 16) {
   return Math.random().toString(36).substr(2, length);
 }
@@ -31,8 +33,9 @@ function App() {
   };
 
   const saveGameData = (userID, outputData) => {
+    console.log(userID, outputData);
     axios
-      .post("http://localhost:5000/data/add", { userID, outputData })
+      .post(`${API_URL}/data/add`, { userID, outputData })
       .then((res) => console.log(res.data))
       .catch((err) => console.log("Error: " + err));
   };
