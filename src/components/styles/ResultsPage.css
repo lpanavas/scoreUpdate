@@ -45,8 +45,8 @@
   }
 
   .restart-game {
-    position: absolute;
-    bottom: 1em;
+    position: relative;
+    bottom: 3em;
     margin: 0 auto;
     display: flex;
   }

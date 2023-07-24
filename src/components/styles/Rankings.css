@@ -1,14 +1,14 @@
 /* Rankings.css */
 
 .rankings {
-   width: 100%;
-   height: 100%;
-   text-align: center;
-   display: flex;
-    flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  overflow: auto; /* Or 'scroll' if you always want to show the scrollbar */
+}
 
-   
-  }
   .rankings-header{
     width: 90%;
     margin-top: 1em;

@@ -8,7 +8,7 @@ import "./styles/Rankings.css";
 import chroma from "chroma-js";
 Modal.setAppElement("#root");
 
-const Rankings = ({ outputData, selectedCards }) => {
+const Rankings = ({ outputData, selectedCards, onRestartGame }) => {
   const [rankings, setRankings] = useState(null);
   const [userRankings, setUserRankings] = useState(null);
   const [publicRankings, setPublicRankings] = useState(null);
@@ -19,7 +19,7 @@ const Rankings = ({ outputData, selectedCards }) => {
   const [flippedCardIds, setFlippedCardIds] = useState([]);
 
   useEffect(() => {
-    console.log("outputData changed:", outputData);
+    console.log("outputData changed:");
   }, [outputData]);
 
   useEffect(() => {
@@ -33,7 +33,6 @@ const Rankings = ({ outputData, selectedCards }) => {
         );
         setRankings(sortedPublicRankings);
         setPublicRankings(sortedPublicRankings);
-        console.log(sortedPublicRankings);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -164,7 +163,6 @@ const Rankings = ({ outputData, selectedCards }) => {
           ).sort((a, b) => a[1] - b[1]);
           setRankings(sortedPublicRankings);
           setPublicRankings(sortedPublicRankings);
-          console.log(sortedPublicRankings);
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -191,7 +189,6 @@ const Rankings = ({ outputData, selectedCards }) => {
 
   const openModal = (cardData) => {
     const matchingCard = selectedCards.find((card) => card.ID === cardData.id);
-    console.log(outputData);
     setSelectedCardData(matchingCard);
     setIsModalOpen(true);
   };
@@ -342,7 +339,7 @@ const Rankings = ({ outputData, selectedCards }) => {
       </div>
       <div className="bottom-rankings">
         <div className="rankings-columns">
-          <p className="card-text">Most Acceptable</p>
+          <p className="card-text">Least Worried</p>
           {userRankings ? (
             userRankings.map(([id, rank]) => (
               <div
@@ -361,8 +358,7 @@ const Rankings = ({ outputData, selectedCards }) => {
                   <div className="card-text">
                     <p>Legislation Risk: {findCard(id).classification}</p>
                     <p>
-                      Your Risk:{" "}
-                      {outputData.risk[cardIdToTitle[id]] || "No choice made"}
+                      Your Risk: {outputData.risk[[id]] || "No choice made"}
                     </p>
                   </div>
                 ) : (
@@ -375,10 +371,10 @@ const Rankings = ({ outputData, selectedCards }) => {
           ) : (
             <p>Loading...</p>
           )}{" "}
-          <p className="card-text">Least Acceptable</p>
+          <p className="card-text">Most Worried</p>
         </div>
         <FlipMove className="rankings-columns">
-          <p className="card-text">Most Acceptable</p>
+          <p className="card-text">Least Worried</p>
 
           {publicRankings ? (
             publicRankings.map(([id, rank]) => (
@@ -401,48 +397,12 @@ const Rankings = ({ outputData, selectedCards }) => {
             <p>Loading...</p>
           )}
 
-          <p className="card-text">Least Acceptable</p>
+          <p className="card-text">Most Worried</p>
         </FlipMove>
       </div>
-      {/* <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        contentLabel="Card Information"
-        // className="my-modal"
-        // overlayClassName="my-modal-overlay"
-        style={{
-          overlay: {
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          },
-          content: {
-            top: "50%",
-            left: "50%",
-            right: "auto",
-            bottom: "auto",
-            marginRight: "-50%",
-            transform: "translate(-50%, -50%)",
-            width: "60vw",
-            height: "70vh",
-            borderRadius: "1em",
-          },
-        }}
-      >
-        <h2 className="modal-title">Title: {selectedCardData.title}</h2>
-        <p className="modal-text">
-          <b>Legislation text:</b> {selectedCardData.reference}
-        </p>
-        <p className="modal-text">
-          {" "}
-          <b>Risk Assigned:</b> {selectedCardData.classification}
-        </p>
-        <p className="modal-text">
-          <b>Your Risk Score: </b>
-          {outputData.risk[selectedCardData.title] || "No choice made"}
-        </p>
-        <button className="modal-close-btn" onClick={closeModal}>
-          X
-        </button>
-      </Modal> */}
+      <button className="restart-game" onClick={onRestartGame}>
+        Restart Game
+      </button>
     </div>
   );
 };
